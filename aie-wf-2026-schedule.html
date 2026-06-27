@@ -59,7 +59,14 @@
   .detailbtn{cursor:pointer;font-size:.74rem;color:var(--accent);background:none;border:none;padding:4px 0 0;margin-top:4px}
   .detail{display:none;margin-top:9px;padding:11px 12px;background:var(--panel2);border:1px solid var(--line);border-radius:9px}
   .detail.show{display:block}
-  .who{font-size:.8rem;color:#c9b6ff;margin-bottom:6px}
+  .who{font-size:.8rem;color:#c9b6ff;margin-bottom:8px;line-height:1.8}
+  .who a.spk{color:#c9b6ff;text-decoration:none;font-weight:600}
+  .who a.spk:hover{text-decoration:underline}
+  .spk{font-weight:600}
+  .aff{color:var(--muted);font-weight:400}
+  .slink{font-size:.66rem;color:var(--accent);text-decoration:none;margin-left:4px;border:1px solid var(--line);border-radius:4px;padding:1px 5px;white-space:nowrap}
+  .slink:hover{border-color:var(--accent);background:rgba(124,92,255,.12)}
+  .spkrow{display:inline-flex;align-items:center;flex-wrap:wrap;gap:2px;margin-right:10px}
   .desc{font-size:.86rem;color:#cdd6e0;margin:0 0 8px;white-space:pre-wrap}
   .desc.empty{color:var(--muted);font-style:italic}
   .altrow{font-size:.8rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:7px;margin-top:2px}
@@ -75,7 +82,8 @@
     .tabs,.toolbar,.detailbtn,.chk,header .meta,header .links{display:none!important}
     .day{display:block!important} .detail{display:block!important}
     body{background:#fff;color:#000} .slot{break-inside:avoid;border-color:#ccc;background:#fff}
-    .pill,.tag,.by,.desc,.who,.altrow{color:#222} .title{color:#000}
+    .pill,.tag,.by,.desc,.who,.altrow,.aff,.spk,.slink{color:#222} .title{color:#000}
+    .who a.spk{color:#000} .slink{border-color:#bbb}
   }
 </style>
 </head>
@@ -102,7 +110,7 @@
     <span><i class="dot" style="background:var(--pick)"></i> Pick</span>
     <span><i class="dot" style="background:var(--keynote)"></i> Keynote</span>
     <span><i class="dot" style="background:var(--net)"></i> Networking</span>
-    <span>ⓘ details = speakers + full description · ↔ backup pick · ☑ check off (saved in this browser)</span>
+    <span>ⓘ details = linked speakers + full description · ↔ backup pick · ☑ check off (saved in this browser)</span>
   </div>
 
   <div class="tabs" id="tabs"></div>
@@ -141,7 +149,15 @@
         "room": "Track 6",
         "track": "Workshops Day 1",
         "speakers": [
-          "Ignacio Martinez"
+          {
+            "name": "Ignacio Martinez",
+            "role": "AI Developer Advocate",
+            "company": "Oracle",
+            "linkedin": null,
+            "twitter": "https://x.com/nacho_martinez",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "In this hands-on workshop you'll build a working autonomous agent from the harness up, in a notebook, then see it live in a full working web application and leave with one that can write and run its own automations. You'll implement every surface area yourself: a set of predefined tools, persistent memory through the Oracle AI Agent Memory package, orchestration with LangChain and LangGraph, and LLM access through OCI GenAI Service, composing the full set of Oracle primitives into one harness you understand end to end.\n\nMost teams assemble that harness from a dozen disconnected services: one store for vectors, another for state, a separate reranker, a bolt-on memory layer. We take the opposite approach, on a single unified memory core. The organizing principle is optionality by default: you shouldn't have to choose your memory substrate up front. With Oracle AI Database you get file system and database memory in one place, embedding models and rerankers running inside the database kernel, and every retrieval strategy an AI workload needs without leaving the core.\n\nAnd consolidating onto one core is what keeps the whole thing tractable. You know the drill: a production harness has you holding all those moving parts in your head at once, and most of your attention goes to keeping them in sync rather than improving the agent. Pull that sprawl into a single core and the cognitive load drops. You get to think about what the agent does, not where its state lives. That's the difference between controlling your harness and renting its pieces.",
@@ -155,7 +171,15 @@
         "room": "Track 7",
         "track": "Workshops Day 1",
         "speakers": [
-          "Nnenna Ndukwe"
+          {
+            "name": "Nnenna Ndukwe",
+            "role": "Principal Developer Advocate and Software Engineer",
+            "company": "Qodo AI",
+            "linkedin": null,
+            "twitter": "https://x.com/nnennahacks",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "AI coding agents can now generate code at unprecedented speed. But faster code generation creates a new engineering problem: how do we know when agent-written code is actually safe, maintainable, and ready to merge? In this hands-on workshop, attendees will build an agentic coding workflow with enforceable code quality gates across planning, implementation, testing, and code review. By the end of the session, participants will have a working reference pattern for agentic software delivery: an AI-assisted workflow that can inspect a repo, implement a change, run tests, evaluate risk, respond to feedback, and surface what still requires human judgment. This is a technical enablement session for engineers building with AI coding agents, platform teams designing agentic SDLC workflows, and AI engineering leaders thinking about how to scale software quality with AI.",
@@ -169,8 +193,24 @@
         "room": "Track 2",
         "track": "Workshops Day 1",
         "speakers": [
-          "Nick Nisi",
-          "Zack Proser"
+          {
+            "name": "Nick Nisi",
+            "role": "Developer Experience Engineer",
+            "company": "WorkOS",
+            "linkedin": "https://www.linkedin.com/in/nicknisi",
+            "twitter": "https://x.com/nicknisi",
+            "website": "https://nicknisi.com",
+            "blog": null
+          },
+          {
+            "name": "Zack Proser",
+            "role": "AI Engineer, Applied AI",
+            "company": "WorkOS",
+            "linkedin": null,
+            "twitter": "https://x.com/zackproser",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "Most engineers are bolting AI onto a workflow that was designed for a pre-AI world. The result is a faster version of the same grind. This talk is about the other path: rebuilding the daily practice of software engineering from the ground up, around what agents are actually good at.\n\nTwo senior practitioners from WorkOS will walk through how we actually work now as AI-native engineers — not in the aspirational sense, but the literal one. We think out loud and voice-code instead of typing our way to clarity. We package recurring expertise into agent skills so we're not re-explaining context every session. We wire up hooks that fire on the events we care about, and hand off scheduled tasks to agents that run overnight, while we're away from the keyboard, or otherwise off the clock. The throughline is intentional design: deciding what a human should hold onto and what should be delegated, then building the machinery to make that real.\n\nBecause there are two of us, you'll see more than one set of habits — where our setups converge on the same patterns, and where they diverge based on how each of us thinks and works. The pitch isn't \"do more.\" It's that an AI-native setup, designed deliberately, buys back attention and protects you from the burnout that comes from treating agents as a turbocharger for an old loop. Attendees will leave with a concrete mental model for voice-driven development, a pattern for authoring reusable agent skills, and working examples of hooks and scheduled automations they can adapt the same week.",
@@ -196,9 +236,33 @@
         "room": "Track 6",
         "track": "",
         "speakers": [
-          "Louis-François Bouchard",
-          "Samridhi Vaid",
-          "Omar Solano"
+          {
+            "name": "Louis-François Bouchard",
+            "role": "CTO & Co-Founder",
+            "company": "Towards AI",
+            "linkedin": "https://www.linkedin.com/in/whats-ai/",
+            "twitter": "https://x.com/Whats_AI",
+            "website": "https://www.louisbouchard.ai/",
+            "blog": "https://www.louisbouchard.ai/"
+          },
+          {
+            "name": "Samridhi Vaid",
+            "role": "Senior Machine Learning Engineer",
+            "company": "Towards AI",
+            "linkedin": "https://www.linkedin.com/in/samridhivaid/",
+            "twitter": "https://x.com/samridhivaid",
+            "website": "https://samridhivaid.com/",
+            "blog": null
+          },
+          {
+            "name": "Omar Solano",
+            "role": "AI Engineer",
+            "company": "Towards AI",
+            "linkedin": "https://www.linkedin.com/in/omar-solano1",
+            "twitter": "https://x.com/omar_solano1",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "Every long agent session eventually breaks: the assistant that swore it would \"never push to main\" does exactly that forty turns later. The model didn't get dumber — its context did. This workshop is about engineering the context window so that stops happening, shown with Towards AI's open-source AI tutor, which answers questions for students of our AI-engineering courses. Context engineering is deciding what the model sees on every single call — instructions, history, retrieved course content, memory, and tool outputs — and it's the line between a tutor that holds a coherent session and one that forgets the student's setup halfway through. We'll move in three stages, mirroring how the project actually went. The concepts: the two root problems (a finite window, a stateless model), the full compaction toolkit (truncation, trimming, tool-result clearing, summarization, and offloading to files — and when each actually helps), memory that survives across sessions, skills loaded on demand, and production-grade retrieval (chunking, metadata, course scoping, hybrid search, reranking, and evaluating). We'll cover the tutor's architecture, and the evaluation harness we used to measure every run on Gemini — tokens, cost, latency, and memory probes instead of vibe-checks. At real volume, even Gemini Flash got expensive, so we tested whether open and local models could match the quality for a fraction of the cost and match result quality. Everything is open-source and will be shared during the workshop.",
@@ -212,7 +276,15 @@
         "room": "Track 2",
         "track": "",
         "speakers": [
-          "Paul Bakaus"
+          {
+            "name": "Paul Bakaus",
+            "role": "Founder",
+            "company": "Renaissance Geek, Inc.",
+            "linkedin": "https://linkedin.com/in/paulbakaus",
+            "twitter": "https://x.com/pbakaus",
+            "website": "https://www.paulbakaus.com/",
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "Most agent skills are a system prompt and a prayer. They produce safe, median output because that's what LLMs default to. After building 24 design skills across 9 AI platforms, I found the patterns that break through that ceiling, and they're rarely documented or discussed. Make your agents argue: spawn parallel sub-agents that independently evaluate the same work, then force their conflicting opinions into a single result. The output is bolder than any single agent would dare. Build mixture-of-expert skills that route to specialized sub-agents the way frontier models route to specialized networks. Give your skills memory through persistent context files that restore across sessions, so every invocation builds on the last. Wire up skill hooks that auto-activate after execution to validate, transform, or chain into the next skill. Exploit barely documented environment variables and shell expansion to make skills context-aware before they even run. Let's dig into the dark arts of skill engineering to craft ultra powerful skills.",
@@ -258,7 +330,15 @@
         "room": "Main Stage",
         "track": "Software Factories",
         "speakers": [
-          "Jason Liu"
+          {
+            "name": "Jason Liu",
+            "role": "Developer Experience, OpenAI",
+            "company": "OpenAI",
+            "linkedin": "https://www.linkedin.com/in/jxnlco",
+            "twitter": "https://x.com/jxnlco",
+            "website": "https://jxnl.co/",
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": null,
@@ -272,7 +352,15 @@
         "room": "Track 1",
         "track": "Claws & Personal Agents",
         "speakers": [
-          "Vinoth Govindarajan"
+          {
+            "name": "Vinoth Govindarajan",
+            "role": "Member of Technical Staff",
+            "company": "OpenAI",
+            "linkedin": "https://www.linkedin.com/in/vinothgovindarajan/",
+            "twitter": "https://x.com/iamvinoth",
+            "website": "https://theagentstack.substack.com/",
+            "blog": "https://theagentstack.substack.com/"
+          }
         ],
         "status": "confirmed",
         "desc": "AI agents do not fail only because the model is wrong. Many production failures happen in the harness around the model: state is not persisted, two runs mutate the same session, a tool call never returns, an approval loses scope, or an internal success never becomes user-visible proof. This talk uses OpenClaw as a public case study to examine real harness failure modes and extract a reusable production model for AI engineers. We will look at how events enter an agent system, how session state is rehydrated, why single-writer lanes and throttles matter, and why tool execution needs scoped approvals and auditable receipts. The core idea is simple: a model proposes, the harness commits, and the receipt proves it. Attendees will leave with a practical 'run receipt' audit they can apply to their own agents: what woke it up, which state did it inherit, what authority did it use, what executed, and what evidence survived.",
@@ -286,7 +374,15 @@
         "room": "Track 1",
         "track": "Software Factories",
         "speakers": [
-          "Kenton Varda"
+          {
+            "name": "Kenton Varda",
+            "role": "Principal Engineer",
+            "company": "Cloudflare",
+            "linkedin": null,
+            "twitter": "https://x.com/KentonVarda",
+            "website": "https://lanparty.house",
+            "blog": "https://lanparty.house"
+          }
         ],
         "status": "confirmed",
         "desc": "We are entering the end game of Kenton's 15-year master plan. The architect of Cloudflare Workers, Durable Objects, Cap'n Proto, and Sandstorm.io, and the guy who coined the term \"Code Mode\", will demo Gadgets, an AI productivity suite which ties all these ideas together. We've all heard that the future is micro-apps customized for every niche, but how do we actually make that usable, how do we make it scale, and most importantly, how do we make it safe for even non-developers to use? Kenton will show how Gadgets solves these problems, including a sandbox design that makes it essentially impossible for apps to have vulnerabilities at all. He'll then open source it for your slop-forking pleasure.",
@@ -300,7 +396,15 @@
         "room": "Main Stage",
         "track": "Software Factories",
         "speakers": [
-          "Daksh Gupta"
+          {
+            "name": "Daksh Gupta",
+            "role": "co-founder/CEO",
+            "company": "Greptile",
+            "linkedin": "https://www.linkedin.com/company/greptile/posts/?feedView=all",
+            "twitter": "https://x.com/greptile",
+            "website": "https://www.greptile.com",
+            "blog": "https://www.greptile.com"
+          }
         ],
         "status": "confirmed",
         "desc": "We analyzed >1M end-to-end AI generated PRs reviewed by Greptile to understand what types of bugs they tend to create and some strategies on mitigating them. For instance, did you know that Claude Code is nearly 3X more likely than Codex to introduce auth bypass vulnerabilities?",
@@ -326,7 +430,15 @@
         "room": "Track 3",
         "track": "Search & Retrieval",
         "speakers": [
-          "Benjamin Clavié"
+          {
+            "name": "Benjamin Clavié",
+            "role": "Member of Technical Staff",
+            "company": "Mixedbread Inc.",
+            "linkedin": null,
+            "twitter": "https://x.com/bclavie",
+            "website": "https://mixedbread.com",
+            "blog": "https://ben.clavie.eu"
+          }
         ],
         "status": "confirmed",
         "desc": "It's tempting to assume that just like agents revolutionised coding, they will revolutionize other areas: legal, finance, advertising, and even medicine. All of those have in common that they are fundamentally knowledge work. And thankfully, humans have spent thousands of years searching for the best possible workflows for knowledge work. And yet, we seem to be disregarding all of these learnings, forcing every knowledge task into the shape that worked for coding. Today, we're going to talk about the history of knowledge work and how tools were co-designed to support it to understand how we should be building Knowledge Agents, themselves co-designed with their Knowledge Tools. This is key to avoiding falling into a \"good enough\" local optimum: think about legal clerking, a core part of the legal industry where information gathering and reasoning is performed to support the work of senior lawyers. The practice of clerking follows its own code, rules and best practices, which could not have feasibly emerged from studying software engineering: and similarly, there is no reason to believe knowledge agents could emerge from coding agents.",
@@ -340,7 +452,15 @@
         "room": "Track 1",
         "track": "Claws & Personal Agents",
         "speakers": [
-          "Lance Martin"
+          {
+            "name": "Lance Martin",
+            "role": "Member of Technical Staff",
+            "company": "Anthropic",
+            "linkedin": "https://www.linkedin.com/in/lance-martin-64a33b5",
+            "twitter": "https://x.com/RLanceMartin",
+            "website": "https://rlancemartin.github.io",
+            "blog": "https://rlancemartin.github.io"
+          }
         ],
         "status": "confirmed",
         "desc": "Claude is capable of long horizon tasks. In this talk, we'll share lessons learned about building agent harnesses for reliable and secure long-horizon work. This include decoupling the brain and hands, self-verification, self-learning, and design for evolving agent harnesses.",
@@ -354,7 +474,15 @@
         "room": "Track 1",
         "track": "Claws & Personal Agents",
         "speakers": [
-          "Karan Vaidya"
+          {
+            "name": "Karan Vaidya",
+            "role": "Co-founder",
+            "company": "Composio",
+            "linkedin": "https://www.linkedin.com/in/kaavee315/",
+            "twitter": "https://x.com/KaranVaidya6",
+            "website": "https://kvaidya.com/",
+            "blog": "https://kvaidya.com/"
+          }
         ],
         "status": "confirmed",
         "desc": "MCP, skills, Cli - so much noise - what’s the best way for agents to communicate",
@@ -368,7 +496,15 @@
         "room": "Main Stage",
         "track": "Software Factories",
         "speakers": [
-          "Sarah Sachs"
+          {
+            "name": "Sarah Sachs",
+            "role": "Eng Lead, AI",
+            "company": "Notion",
+            "linkedin": "https://www.linkedin.com/in/sarahmsachs/",
+            "twitter": "https://x.com/sarahmsachs",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": null,
@@ -382,8 +518,24 @@
         "room": "Track 3",
         "track": "Search & Retrieval",
         "speakers": [
-          "Yuval Belfer",
-          "Niv Granot"
+          {
+            "name": "Yuval Belfer",
+            "role": "Sr. Developer Advocate",
+            "company": "AI21",
+            "linkedin": "https://linkedin.com/in/yuval-belfer",
+            "twitter": "https://x.com/yuvalinthedeep",
+            "website": null,
+            "blog": null
+          },
+          {
+            "name": "Niv Granot",
+            "role": null,
+            "company": null,
+            "linkedin": null,
+            "twitter": null,
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "Every RAG system bets everything on a single chunk size. 500 tokens? 800? Pick wrong, and half your queries fail before they start. But here's what nobody tells you: all the picks are wrong; there is no single chunk size that works for all queries. We ran oracle experiments across meeting transcripts, story chapters, and TV scripts. The result? Queries disagree violently on what chunk size works best - sometimes by 40 percentage points. Your \"tuned\" chunk size isn't a compromise; it's systematic underperformance. In this talk, we'll expose why fixed chunking fails and show you a dead-simple fix: index at multiple chunk sizes, aggregate at retrieval time using Reciprocal Rank Fusion. No retraining. No LLM overhead. Just 1-37% better recall across benchmarks by letting queries vote with their ranks instead of forcing them into one-size-fits-all boxes. Walk away knowing exactly when your chunk size is sabotaging you - and how to stop leaving 20-40% of your retrieval performance on the table.",
@@ -397,7 +549,15 @@
         "room": "Main Stage",
         "track": "Software Factories",
         "speakers": [
-          "Kyle Mistele"
+          {
+            "name": "Kyle Mistele",
+            "role": "CTO",
+            "company": "HumanLayer",
+            "linkedin": "https://www.linkedin.com/in/kyle-mistele",
+            "twitter": "https://x.com/0xBlacklight",
+            "website": "https://blacklight.sh",
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "Code is free, software is infinite, and agents can do it all - that's the promise of the lights-off software factory, where humans interact only with tickets & specifications, and nobody reads the code, let alone writes it. We ran our own for six months, and we have the scars to prove it - bad code compounded, and agents created problems that agents couldn't solve - until we had to throw it all away. But this is a survivor's guide, not an obituary. In this talk, we'll share the challenges we encountered, what we liked, what we hated, what we're still doing, what we stopped doing, and what we started doing afterwards.",
@@ -443,8 +603,24 @@
         "room": "Track 8",
         "track": "Context Engineering",
         "speakers": [
-          "Kurtis Van Gent",
-          "Prerna Kakkar"
+          {
+            "name": "Kurtis Van Gent",
+            "role": "Senior Staff Software Engineer",
+            "company": "Google",
+            "linkedin": "https://www.linkedin.com/in/kurtisvg/",
+            "twitter": null,
+            "website": null,
+            "blog": "https://kvg.dev/"
+          },
+          {
+            "name": "Prerna Kakkar",
+            "role": "Senior Software Engineer",
+            "company": "Google",
+            "linkedin": "https://www.linkedin.com/in/prernakakkar95/",
+            "twitter": null,
+            "website": "https://about.google/",
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "A dangerous pattern is evolving in the ecosystem: developers are deploying \"Build-Time\" tools into \"Run-Time\" environments. In this session, we will introduce a critical distinction for the MCP ecosystem: the difference between Build-Time Agents (Developer Assistants like Gemini Code Assist) and Run-Time Agents (End-user applications like a Customer Support bot). Drawing from our experience building the MCP Toolbox, we will demonstrate why the \"Atomic\" tools that make Build-Time agents powerful become catastrophic liabilities for Run-Time agents. We will provide a framework for transitioning your architecture across three key axes: Design: Moving from flexible, atomic primitives to \"Composite Workflows\" that encapsulate business logic. Security: Shifting from \"Developer Identity\" (trusted) to \"Workload Identity\" (zero-trust), where the agent is treated as an untrusted user. Reliability: Why production agents need \"Agent-Readable\" errors (natural language guidance) rather than the stack traces that developers rely on. Attendees will leave with a clear rubric for evaluating whether their tools are truly \"Production Ready\" or just \"Prototype Ready.\"",
@@ -458,7 +634,15 @@
         "room": "Track 1",
         "track": "Sandbox & Platform Engineering",
         "speakers": [
-          "Shashank Goyal"
+          {
+            "name": "Shashank Goyal",
+            "role": "Head of Provider Ecosystem",
+            "company": "OpenRouter",
+            "linkedin": "https://www.linkedin.com/in/shashankgoyal1/",
+            "twitter": "https://x.com/shashankgoyal95",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": null,
@@ -472,7 +656,15 @@
         "room": "Track 8",
         "track": "Context Engineering",
         "speakers": [
-          "Ajay Prakash"
+          {
+            "name": "Ajay Prakash",
+            "role": "Senior Staff Software Engineer",
+            "company": "Linkedin",
+            "linkedin": "https://www.linkedin.com/in/ajay-prakash-3780b132/",
+            "twitter": "https://x.com/ajay_prakash_ai",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "Everyone's building custom AI agents. We didn't. Instead, we built CAPTAIN — an MCP server that makes any off-the-shelf coding agent understand LinkedIn's entire engineering stack. The secret: a meta-tool architecture (discover → inspect → execute) and composable skills that encode tribal knowledge as executable workflows. 500+ skills later, it's used across all of LinkedIn engineering. I'll show you the architecture in 10 minutes and why context engineering beats model engineering every time.",
@@ -486,7 +678,15 @@
         "room": "Expo Stage 4 SE",
         "track": "Context Engineering",
         "speakers": [
-          "Anant Srivastava"
+          {
+            "name": "Anant Srivastava",
+            "role": null,
+            "company": "Oracle",
+            "linkedin": "https://www.linkedin.com/in/anantds",
+            "twitter": null,
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "The interesting engineering in production AI isn't in the model. Your knowledge lives in files, databases, and APIs: docs, runbooks, conversations, code. The model just reads tokens. So the real architectural question is which path that knowledge takes to inference: into the prompt directly, into memory for retrieval on demand, or into the weights through fine-tuning. Most teams treat these as a ladder. Start with prompts, escalate to RAG, eventually fine-tune, as if each step is a more advanced version of the last. The field is converging on a different answer: they solve different problems. The prompt shapes behavior and constraints. Memory grounds the model in current, citable knowledge. Weights harden specialized reasoning and format. They're not substitutes you graduate between; they're complementary, and the failures come from using one to do another's job. Fine-tuning to teach the model facts it should have retrieved is the classic trap: you bake in knowledge that's stale the day it ships, and you still can't cite it. This is an opinionated take on all three: when each is the right call, when each is a trap, and the part most teams never build, the circulation between them. Memory that captures what the agent does becomes the dataset you fine-tune on; fine-tuning changes what's worth retrieving; the loop compounds. Get the three paths right and they stop being a pipeline you climb and start being an architecture that learns.",
@@ -512,7 +712,15 @@
         "room": "Track 8",
         "track": "Context Engineering",
         "speakers": [
-          "Laurie Voss"
+          {
+            "name": "Laurie Voss",
+            "role": "Head of Developer Relations",
+            "company": "Arize AI",
+            "linkedin": "https://www.linkedin.com/in/seldo/",
+            "twitter": "https://x.com/seldo",
+            "website": "https://seldo.com",
+            "blog": "https://seldo.com"
+          }
         ],
         "status": "confirmed",
         "desc": "A year ago, frontier models lost the thread somewhere around 200 simultaneous instructions, so skills files had to stay short and lean on sub-skills and subagents. We re-ran IFScale on the 2026 frontier and found the ceiling has moved by an order of magnitude: closer to 2,000 instructions, up to 5,000 on the strongest models. The more interesting story is how models fail at the new frontier: DeepSeek quietly drops instructions, Opus refuses outright when innocuous words trip a safety classifier, Gemini burns its whole budget on reasoning and emits nothing, and GPT-5.5 stops to tell you your request was unreasonable. The capacity problem is largely solved; verification is wide open. We'll show the data, the failure modes, and what it costs to find out. You’ll come out with hard data on the ceiling for complex instructions to LLMs",
@@ -526,7 +734,15 @@
         "room": "Track 8",
         "track": "Context Engineering",
         "speakers": [
-          "Prukalpa Sankar"
+          {
+            "name": "Prukalpa Sankar",
+            "role": "Founder & Co-CEO",
+            "company": "Atlan",
+            "linkedin": "https://www.linkedin.com/in/prukalpa",
+            "twitter": "https://x.com/prukalpa",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "AI without context is confidence without comprehension. Your agent can parse queries, generate SQL, and produce articulate explanations — and still be completely wrong. Not because the model is weak. Because it has no world model of your business. This talk cuts through the context engineering hype and gets concrete. Drawing on 500+ enterprise deployments — Mastercard, Nasdaq, GM, Rocket Mortgage, CME Group — Prukalpa Sankar breaks down the four layers every agent is missing: the data it can access, the meaning behind it, the business rules nobody ever wrote down, and the user context that determines what a correct answer actually looks like. Even OpenAI needed six layers of structured context to make their own internal data agent work — cutting query time from 22 minutes to 90 seconds. The pattern is consistent across every production deployment we've seen. The takeaway: a practical four-layer audit framework you can apply to your own stack on Monday.",
@@ -540,7 +756,15 @@
         "room": "Track 1",
         "track": "Sandbox & Platform Engineering",
         "speakers": [
-          "Kevin Orellana"
+          {
+            "name": "Kevin Orellana",
+            "role": "Software Engineer",
+            "company": "Amazon Web Services",
+            "linkedin": "https://www.linkedin.com/in/kevinorellana/",
+            "twitter": "https://x.com/KevssOrellana",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "We ran 1,000 automated tasks through a production code interpreter sandbox — file I/O, package installs, data analysis, ML training, binary downloads, multi-language execution — and tracked every failure. 88% passed. The other 12% revealed 18 distinct failure modes that no unit test would catch: binary encoding corruption in the transport layer, null bytes silently truncating file downloads, pip blocked by network isolation with no useful error, and path traversal inputs accepted without validation. This talk walks through the experiment design, the findings ranked by severity, and what we changed. If you are building or operating sandboxed execution for AI agents, these are the bugs waiting for your customers to find first.",
@@ -554,7 +778,15 @@
         "room": "Track 8",
         "track": "Context Engineering",
         "speakers": [
-          "Dustin Mihalik"
+          {
+            "name": "Dustin Mihalik",
+            "role": "Technical Fellow",
+            "company": "Indeed",
+            "linkedin": "https://www.linkedin.com/in/dmihalik/",
+            "twitter": null,
+            "website": "https://dmihalik.com",
+            "blog": "https://dmihalik.com"
+          }
         ],
         "status": "confirmed",
         "desc": "Most MCP tools return text. MCP Apps let you go further. But the real unlock isn't just rendering a pretty UI, it’s understanding that the model and the user need fundamentally different things from the same interaction. This talk presents a design pattern for building great MCP Apps: separate the data layer (what the model reasons about) from the display layer (what the user interacts with). When you do this well, the model retains full context and agency over structured data, while the user gets a rich, interactive interface. We'll walk through concrete examples of how splitting data and display unlocks capabilities that pure UI apps can't provide: letting the model make choices around display, answer questions based on interactions, and providing detailed displays and filters. Attendees will leave with a practical mental model for designing MCP Apps that are good for both the human and the AI. Attendees will learn patterns they can apply immediately.",
@@ -568,7 +800,15 @@
         "room": "Track 3",
         "track": "Memory & Continual Learning",
         "speakers": [
-          "Shlok Khemani"
+          {
+            "name": "Shlok Khemani",
+            "role": "Independent Researcher",
+            "company": "-",
+            "linkedin": "https://linkedin.com/in/shlokkhemani/",
+            "twitter": "https://x.com/shloked",
+            "website": "https://shloked.com",
+            "blog": "https://www.shloked.com"
+          }
         ],
         "status": "confirmed",
         "desc": "I've studied every major memory implementation in the industry and then built multiple memory systems for various teams. Sharing hot takes and lessons from across architectures, design, scaling, evals, and memory philosophy.",
@@ -582,7 +822,15 @@
         "room": "Track 3",
         "track": "Memory & Continual Learning",
         "speakers": [
-          "Ben Holmes"
+          {
+            "name": "Ben Holmes",
+            "role": "Dev Rel Lead",
+            "company": "Warp",
+            "linkedin": "https://linkedin.com/in/bholmesdev",
+            "twitter": "https://x.com/bholmesdev",
+            "website": "https://bholmes.dev",
+            "blog": "https://bholmes.dev"
+          }
         ],
         "status": "confirmed",
         "desc": "Putting thoughts to paper (or keyboard, or transcription model) refines your thinking, connects ideas, and pulls context out of your brain for others to learn from. But while taking notes can be fun, organizing those notes is not. Flat lists turn to folders turn to tags and taxonomies that grow unwieldy beyond the first hundred entries. If you can’t find what you wrote down yesterday, or you miss connections to related ideas, you’re missing the value of notetaking: learning from what you notate. Agents dramatically expanded what’s possible here. Combined with Markdown-backed apps like Obsidian to make notes agent-accessible, you can build a second brain that works for you, not the other way around. Andre Karpathy has popularized LLM knowledge bases, and I want to take it further with concrete workflows you can use to organize your thoughts with agents. We’ll explore a number of Obsidian workflows to make this possible: - Automations to organize notes with tags, folders, backlinks, and deduplication to level-up search and discovery - More automations to have agents expand your thinking by auto-recording ideas while you sleep - Building an agentic writing partner to surface related ideas in real time and answer questions as you type (or as you speak) - Voice monologuing and summarization tools to lower the friction of transcibing thoughts into well-formatted notes You’ll walk away with a new appreciation for notetaking, and a second brain that leaves you 10x smarter than your brain alone. Talk format: Code and live tech demos. I will set up all of these automations and tools from scratch, and show agents executing each of them live. I will share the source for all automations as well.",
@@ -628,8 +876,24 @@
         "room": "Main Stage",
         "track": "Harness Engineering",
         "speakers": [
-          "Katelyn Lesse",
-          "Angela Jiang"
+          {
+            "name": "Katelyn Lesse",
+            "role": "Head of Engineering, Claude Platform",
+            "company": "Anthropic",
+            "linkedin": "https://www.linkedin.com/in/katelynlesse/",
+            "twitter": "https://x.com/katelyn_lesse",
+            "website": null,
+            "blog": null
+          },
+          {
+            "name": "Angela Jiang",
+            "role": "Head of Product, Claude Platform",
+            "company": "Anthropic",
+            "linkedin": "https://www.linkedin.com/in/angelajiang/",
+            "twitter": "https://x.com/angjiang",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": null,
@@ -643,7 +907,15 @@
         "room": "Main Stage",
         "track": "Agentic Engineering",
         "speakers": [
-          "Nikita Kothari"
+          {
+            "name": "Nikita Kothari",
+            "role": "Senior Member of Technical Staff",
+            "company": "Salesforce",
+            "linkedin": "https://www.linkedin.com/in/nikita-kothari3",
+            "twitter": null,
+            "website": "https://www.salesforce.com/",
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "Agentic development needs more than one interface: MCPs provide clean, portable connectors to services, with built-in patterns for security and auth. CLIs offer composability, debuggability, and workflows developers already trust. Skills teach agents how to use a wide variety of tools and MCPs effectively without overloading context.",
@@ -657,7 +929,15 @@
         "room": "Main Stage",
         "track": "Agentic Engineering",
         "speakers": [
-          "Michael Grinich"
+          {
+            "name": "Michael Grinich",
+            "role": "Founder & CEO",
+            "company": "WorkOS",
+            "linkedin": null,
+            "twitter": "https://x.com/grinich",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "AI agents are ready to act on users' behalf, but legacy auth flows were built for humans, not agents. This session introduces auth.md, an open protocol that lets agents register and authenticate users without sign-up forms, and shares what early implementers have learned since launch. Learn about the new protocol that Cloudflare, Firecrawl, Cogny, and monday.com are adopting to power agent registration — authenticating agents without sign-up forms.",
@@ -671,7 +951,15 @@
         "room": "Main Stage",
         "track": "Harness Engineering",
         "speakers": [
-          "Mike Chambers"
+          {
+            "name": "Mike Chambers",
+            "role": null,
+            "company": "Amazon Web Services (AWS)",
+            "linkedin": null,
+            "twitter": null,
+            "website": null,
+            "blog": "https://blog.mikegchambers.com"
+          }
         ],
         "status": "confirmed",
         "desc": "Every agent is a while loop. The model takes strings in and produces strings out. We've all written it, debugged it, shipped it. And yet every team building agents is still re-inventing the same session management, truncation logic, tool wiring, and memory plumbing from scratch. The hard part is the harness: session isolation, context management, memory persistence, sandboxed execution, observability. The machinery that makes a model dependable in production. Most of the failures we see in deployed agents (context rot, premature completion, tool bloat) trace back to harness problems, not model problems. This talk covers what a harness actually does, why \"harness engineering\" suddenly showed up in engineering posts from everyone, and what changes when you stop building harnesses by hand. In live demos, we'll build the same agent three ways: hand-rolled Python, framework-generated, and fully managed through a single API call. Each level shifts the failure modes from infrastructure plumbing to engineering judgment, where the real questions are what context to preserve, when to verify, and how to keep an agent from finishing half the job and calling it done. The harness handles the machinery. You still have to engineer the behavior.",
@@ -697,7 +985,15 @@
         "room": "Track 8",
         "track": "Agentic Engineering",
         "speakers": [
-          "Dominik Kundel"
+          {
+            "name": "Dominik Kundel",
+            "role": "Developer Experience Lead",
+            "company": "OpenAI",
+            "linkedin": "https://linkedin.com/in/dkundel",
+            "twitter": "https://x.com/dkundel",
+            "website": "https://dkundel.com",
+            "blog": null
+          }
         ],
         "status": "tentative",
         "desc": null,
@@ -711,7 +1007,15 @@
         "room": "Main Stage",
         "track": "Harness Engineering",
         "speakers": [
-          "Giselle van Dongen"
+          {
+            "name": "Giselle van Dongen",
+            "role": "Developer Advocate",
+            "company": "Restate",
+            "linkedin": "https://www.linkedin.com/in/giselle-van-dongen/",
+            "twitter": "https://x.com/vdgiselle",
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "In this session, we skip past the demos that work only on your laptop, and go straight to how you can build production-ready agents with a stack that covers all the hard bits of backend development that you don’t want to be bothered with when developing your agents: - Failure resiliency: retries, timeouts, and exactly-once execution so a flaky API or a crashed process doesn't corrupt your agent's state or makes them start from scratch - Durable Sessions: a session store with built-in conversation isolation and protection against corruption from concurrent agents - Pause/resume for human approvals: survive human approvals and research that take weeks without building complex infra - Agent-to-agent messaging layer: call agents developed by other teams or running on other infra with resilient HTTP calls - A kill switch: cancel a running agent cleanly at any point, without leaving half-executed work behind We will demonstrate each concept with live code examples, using Python, OpenAI Agents SDK and Restate as open-source Durable Execution engine. All examples are generally applicable: pick your favorite agent SDK (OpenAI Agents, Pydantic AI, Vercel AI, Google ADK,…) or go wild and implement low-level custom agents by just tying together LLM calls with custom logic.",
@@ -725,7 +1029,15 @@
         "room": "Main Stage",
         "track": "Harness Engineering",
         "speakers": [
-          "Sarah Sanders"
+          {
+            "name": "Sarah Sanders",
+            "role": "Context Engineer",
+            "company": "PostHog",
+            "linkedin": "https://www.linkedin.com/in/sarah-s-42913121a/",
+            "twitter": null,
+            "website": null,
+            "blog": null
+          }
         ],
         "status": "confirmed",
         "desc": "PostHog's Wizard agent can read your codebase, install packages, and run shell commands on your laptop. Yes, on purpose. This talk covers how we went from \"defense-in-hope\" to a standalone, robust security service. It'll highlight results from a pentest that made us question our life choices, an internal audit that challenged our architecture, and the debate over how to secure the entire pipeline. You'll learn why \"scan-then-trust\" is a weaker model than you think, what it takes to build kill switches you hope you never use, and what happens when you pentest an AI agent that has access to Bash.",
@@ -739,7 +1051,15 @@
         "room": "Main Stage",
         "track": "Harness Engineering",
         "speakers": [
-          "Kay Malcolm"
+          {
+            "name": "Kay Malcolm",
+            "role": null,
+            "company": "Oracle",
+            "linkedin": "https://www.linkedin.com/in/kaymalcolm",
+            "twitter": null,
+            "website": null,
+            "blog": "https://blogs.oracle.com/authors/kay-malcolm"
+          }
         ],
         "status": "confirmed",
         "desc": "The model is the easy part. Everything that makes an agent survive contact with production lives in the harness around it: orchestration, tooling, governance, and the memory core that keeps the system grounded when the model itself is probabilistic, forgetful, and non-deterministic. This talk walks the surface areas of an agent harness and consolidates the lessons we're learning as we ship them, from agentic applications in their current form (autonomous systems that now build their own automations) to the continual-learning loops that let agents improve from their own experience. We'll look at how the discipline is segmenting. AI application development is no longer one role but several: agent engineers, memory engineers, and platform engineers. We'll map Oracle's primitives onto each as the current state of harness engineering takes shape. We'll also examine the two populations betting on this stack at once, enterprise customers who need governance, reliability, and scale, alongside the cracked developers who need fast, composable primitives, and why a well-engineered harness serves both. And we'll make the case that has held through every shift in the stack: memory isn't a feature you bolt on, it's the foundation the rest of the harness stands on. The database remains the memory core, and when everything above it is probabilistic, it's the last line of defense.",
@@ -753,7 +1073,15 @@
         "room": "Main Stage",
         "track": "Harness Engineering",
         "speakers": [
-          "Andrew Qu"
+          {
+            "name": "Andrew Qu",
+            "role": "Chief of Software",
+            "company": "Vercel",
+            "linkedin": "https://linkedin.com/in/andrew-qu",
+            "twitter": "https://x.com/andrewqu",
+            "website": "https://andrewqu.com",
+            "blog": "https://andrewqu.com"
+          }
         ],
         "status": "confirmed",
         "desc": "At Vercel I've built a successful AI data scientist, that has taken the load off of our data team from answering ad-hoc data queries, and fields over 1,200 unique queries a day from just internal Vercelians. I've been building and iterating on it since last september, and it's gone through over 6 different rewrites, the newest one of which has inspired us to build a new agent framework (to be teased during the talk ;) ). I'd talk about why we build agents, how we build agents, and how to build effective agents in today's world. Just prompting, to adding bespoke tooling, to embedding claude code, to file system agents, to skills-based agents, to the new agent harness framework.",
@@ -767,7 +1095,15 @@
         "room": "Main Stage",
         "track": "Harness Engineering",
         "speakers": [
-          "Philipp Schmid"
+          {
+            "name": "Philipp Schmid",
+            "role": "Staff Engineer",
+            "company": "Google DeepMind",
+            "linkedin": "https://www.linkedin.com/in/philipp-schmid-a6a2bb196/",
+            "twitter": "https://x.com/_philschmid",
+            "website": "https://www.philschmid.de/",
+            "blog": "https://www.philschmid.de"
+          }
         ],
         "status": "confirmed",
         "desc": "Six months ago, building an agent meant writing a Python class with a `while` loop, tool definitions in dicts, manual state management or writing custom python functions. Today, you define an agent in a YAML file, drop a `SKILL.md` into a folder, and deploy. This talk traces the arc from \"Agent in Python\" to \"Agent as filesystem\". You'll learn the same agent built three ways: the hard way (Jan 2025), the simple way (Oct 2025), and the zero-code way (today).",
@@ -834,7 +1170,23 @@ DATA.forEach((d, di) => {
       const det = el('div', 'detail');
 
       if (s.speakers && s.speakers.length) {
-        const w = el('div', 'who'); w.textContent = '👤 ' + s.speakers.join(', '); det.appendChild(w);
+        const w = el('div', 'who');
+        w.appendChild(document.createTextNode('👤 '));
+        s.speakers.forEach(sp => {
+          const row = el('span', 'spkrow');
+          const primary = sp.linkedin || sp.twitter || sp.website || sp.blog;
+          const nameEl = primary ? el('a', 'spk') : el('span', 'spk');
+          if (primary) { nameEl.href = primary; nameEl.target = '_blank'; nameEl.rel = 'noopener'; }
+          nameEl.textContent = sp.name;
+          row.appendChild(nameEl);
+          const aff = [sp.role, sp.company].filter(Boolean).join(', ');
+          if (aff) { const a = el('span', 'aff'); a.textContent = ' — ' + aff; row.appendChild(a); }
+          [['in', sp.linkedin], ['𝕏', sp.twitter], ['web', sp.website], ['blog', sp.blog]].forEach(([label, url]) => {
+            if (url) { const c = el('a', 'slink'); c.href = url; c.target = '_blank'; c.rel = 'noopener'; c.textContent = label; row.appendChild(c); }
+          });
+          w.appendChild(row);
+        });
+        det.appendChild(w);
       }
       const p = el('p', 'desc');
       if (s.desc) { p.textContent = s.desc; }
