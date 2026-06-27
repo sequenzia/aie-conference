@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Engineer World's Fair 2026 — My Schedule</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --panel2:#1c232d; --line:#2a3340;
+    --txt:#e6edf3; --muted:#9aa7b4; --accent:#7c5cff; --accent2:#19c37d;
+    --keynote:#f5a623; --net:#19c37d; --pick:#7c5cff; --chip:#243044;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--txt);line-height:1.45;-webkit-font-smoothing:antialiased}
+  header{padding:28px 22px 18px;border-bottom:1px solid var(--line);background:
+       radial-gradient(1200px 200px at 10% -40%,rgba(124,92,255,.25),transparent),var(--panel)}
+  h1{margin:0 0 6px;font-size:1.5rem;letter-spacing:.2px}
+  .sub{color:var(--muted);font-size:.92rem;margin:2px 0}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .pill{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:.78rem;color:var(--muted)}
+  .pill b{color:var(--txt);font-weight:600}
+  .wrap{max-width:960px;margin:0 auto;padding:18px 16px 80px}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.8rem;color:var(--muted);margin:14px 2px 6px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:5;
+        background:var(--bg);padding:12px 0;border-bottom:1px solid var(--line)}
+  .tab{flex:1 1 auto;min-width:130px;text-align:center;cursor:pointer;border:1px solid var(--line);
+       background:var(--panel);color:var(--muted);padding:9px 10px;border-radius:10px;font-size:.86rem;transition:.15s}
+  .tab small{display:block;font-size:.72rem;opacity:.8}
+  .tab.active{background:linear-gradient(180deg,rgba(124,92,255,.25),rgba(124,92,255,.08));
+              color:var(--txt);border-color:var(--accent)}
+  .toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 2px 8px;flex-wrap:wrap}
+  .count{font-size:.82rem;color:var(--muted)}
+  .btns{display:flex;gap:8px}
+  button.act{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:8px;
+             padding:7px 12px;font-size:.8rem;cursor:pointer}
+  button.act:hover{border-color:var(--accent)}
+  .day{display:none}
+  .day.active{display:block;animation:fade .2s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .slot{display:flex;gap:12px;border:1px solid var(--line);background:var(--panel);border-radius:12px;
+        padding:12px 13px;margin:9px 0;align-items:flex-start}
+  .slot.kind-keynote{border-left:3px solid var(--keynote)}
+  .slot.kind-net{border-left:3px solid var(--net)}
+  .slot.kind-pick{border-left:3px solid var(--pick)}
+  .time{flex:0 0 96px;font-variant-numeric:tabular-nums;font-size:.82rem;color:var(--muted);padding-top:2px}
+  .body{flex:1;min-width:0}
+  .title{font-weight:600;font-size:.98rem}
+  .by{color:var(--muted);font-weight:400}
+  .tags{margin-top:5px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tag{font-size:.72rem;background:var(--chip);border:1px solid var(--line);color:var(--muted);
+       border-radius:6px;padding:2px 8px}
+  .tag.star{color:var(--keynote);border-color:rgba(245,166,35,.4)}
+  .alt{margin-top:7px;font-size:.82rem;color:var(--muted);display:none}
+  .alt.show{display:block}
+  .alt b{color:#c9b6ff;font-weight:600}
+  .altbtn{cursor:pointer;font-size:.74rem;color:var(--accent);background:none;border:none;padding:2px 0;margin-top:4px}
+  .chk{flex:0 0 auto;padding-top:1px}
+  .chk input{width:18px;height:18px;accent-color:var(--accent2);cursor:pointer}
+  .done .title{text-decoration:line-through;opacity:.55}
+  footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:26px}
+  a{color:var(--accent)}
+  @media print{
+    .tabs,.toolbar,.altbtn,.chk,header .meta{display:none!important}
+    .day{display:block!important} .alt{display:block!important}
+    body{background:#fff;color:#000} .slot{break-inside:avoid;border-color:#ccc;background:#fff}
+    .pill,.tag{color:#333}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>AI Engineer World's Fair 2026 — My Schedule</h1>
+  <div class="sub">June 29 – July 2, 2026 · Moscone West, San Francisco · America/Los_Angeles</div>
+  <div class="meta">
+    <span class="pill">Ticket: <b>Engineering + Workshops</b></span>
+    <span class="pill">Focus: <b>Harness internals + Evals</b></span>
+    <span class="pill">Stack: <b>Claude · OpenAI · OSS</b></span>
+    <span class="pill">Tie-breaker: <b>Hands-on</b></span>
+    <span class="pill">Networking: <b>Protected</b></span>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="legend">
+    <span><i class="dot" style="background:var(--pick)"></i> Pick</span>
+    <span><i class="dot" style="background:var(--keynote)"></i> Keynote</span>
+    <span><i class="dot" style="background:var(--net)"></i> Networking</span>
+    <span>⭐ marquee · ↔ shows backup pick · ☑ check off as you go (saved in this browser)</span>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="toolbar">
+    <span class="count" id="count"></span>
+    <div class="btns">
+      <button class="act" id="expandAll">↔ Show all backups</button>
+      <button class="act" id="reset">Reset checks</button>
+      <button class="act" onclick="window.print()">🖨 Print / PDF</button>
+    </div>
+  </div>
+
+  <div id="days"></div>
+
+  <footer>
+    Generated for an Engineering + Workshops ticket — access-checked (no Leadership rooms).
+    Breakout talks are 20 min; the backup (↔) is your live pivot list. Confirm tentative rooms on the official app.
+  </footer>
+</div>
+
+<script>
+const DATA = [
+  { id:"d1", label:"Day 1 · Mon", sub:"Jun 29 · Workshops", date:"2026-06-29",
+    slots:[
+      {t:"9:00–11:00", k:"pick", title:"Total Recall: Agent Memory & Harness Engineering", room:"Track 6", tags:["Workshop","Harness"], alt:"Cooking with Codex (Track 3)"},
+      {t:"11:05–12:05", k:"pick", title:"How to Build Quality Gates into Agentic Coding Workflows", room:"Track 7", tags:["Workshop","Evals"], alt:"How I learned to stop worrying and love the sandbox (Track 3)"},
+      {t:"12:10–1:10", k:"pick", title:"Lifestyles of the AI-Native: agent skills, hooks, scheduled tasks", room:"Track 2", tags:["Workshop","Claude"], alt:"Beyond RAG: Build a Relational Context Engine from Scratch (Track 7)"},
+      {t:"1:15–2:15", k:"net", title:"Lunch + Expo", room:"", tags:["Networking"], alt:"Optional hands-on: Turning My Obsidian Vault Into a Local AI Engineer (Track 8)"},
+      {t:"2:20–4:20", k:"pick", title:"⭐ ANCHOR — Context Engineering in 2026: Compaction, Memory & Cost", room:"Track 6", tags:["★ Deep dive","Harness"], alt:"From Vibes to Production: Evaluating & Shipping AI Agents 201 (Track 1)"},
+      {t:"4:30–5:30", k:"pick", title:"The Dark Arts of Skill Engineering", room:"Track 2", tags:["Workshop","Skills"], alt:"Hill-climbing Skills: Improve Agents Without Touching the Model (Track 4)"},
+      {t:"6:00–7:15", k:"net", title:"Expo Welcome + Runway AI Film Festival", room:"Expo", tags:["Networking"], alt:""}
+    ]},
+  { id:"d2", label:"Day 2 · Tue", sub:"Jun 30 · Coding & Retrieval", date:"2026-06-30",
+    slots:[
+      {t:"9:00–10:30", k:"keynote", title:"Keynotes — swyx · Thom Wolf · OpenAI (Embiricos/Huet) · GLM-5.2", room:"Main Stage", tags:["★ Keynote"], alt:""},
+      {t:"10:45–11:05", k:"pick", title:"Getting the most out of Codex — Jason Liu", room:"Software Factories", tags:["Coding","OpenAI"], alt:"Security Firewall for Agents — Ryan Dahl"},
+      {t:"11:10–11:30", k:"pick", title:"Your Agent Didn't Fail. Your Harness Did.", room:"Claws", tags:["Harness"], alt:"The unreasonable effectiveness of BM25 for agentic search"},
+      {t:"11:40–12:00", k:"pick", title:"Gadgets: Personal app vibe coding that is actually safe — Kenton Varda", room:"Software Factories", tags:["Coding"], alt:"The Search Engine for the Agentic Web — Will Bryk"},
+      {t:"12:05–12:25", k:"pick", title:"What we learned by analyzing 1M AI-generated PRs — Daksh Gupta", room:"Software Factories", tags:["Coding","Data"], alt:"Rebuilding the web for agents — Liad Yosef"},
+      {t:"12:25–1:30", k:"net", title:"Lunch + Expo floor", room:"", tags:["Networking"], alt:""},
+      {t:"1:30–1:50", k:"pick", title:"Design Knowledge Agents for Knowledge Work — Benjamin Clavié", room:"Search & Retrieval", tags:["Retrieval"], alt:"Agents' next frontier: agent-to-agent & network effects"},
+      {t:"1:55–2:15", k:"pick", title:"Claude for long-horizon tasks — Lance Martin", room:"Claws", tags:["Claude","Agents"], alt:"Self-Improving software factories — Zach Lloyd"},
+      {t:"2:25–2:45", k:"pick", title:"Tool Execution layer for agents — Karan Vaidya", room:"Claws", tags:["Harness","Tools"], alt:"River: Shopify's Slack-Native AI Agent"},
+      {t:"2:50–3:10", k:"pick", title:"Notion's Token Town — Sarah Sachs", room:"Software Factories", tags:["Case study"], alt:"Where RL Will Take Search"},
+      {t:"3:20–3:40", k:"pick", title:"Stop Chunking Like It's 2022", room:"Search & Retrieval", tags:["Retrieval"], alt:"fighting slop with slop — Vaibhav Gupta (BAML)"},
+      {t:"3:45–4:05", k:"pick", title:"The Software Factory Survivor's Guide — Kyle Mistele", room:"Software Factories", tags:["Coding"], alt:"Every Harness Will Become A Claw — Sam Bhagwat"},
+      {t:"4:30–5:30", k:"keynote", title:"Closing keynotes — ⭐Dex Horthy \"Why Software Factories Fail\" · Erik Meijer · Lee Robinson \"Future of Cursor\"", room:"Main Stage", tags:["★ Keynote"], alt:""},
+      {t:"AM/PM", k:"net", title:"Hands-on anchor options (Track 4): Claude Managed Agents Workshop (10:45–12:25) · Jason Liu \"Setting Yourself Up for Success\" (2:50–4:05)", room:"Track 4", tags:["Workshop alt"], alt:""}
+    ]},
+  { id:"d3", label:"Day 3 · Wed", sub:"Jul 1 · Context + Memory ⭐", date:"2026-07-01",
+    slots:[
+      {t:"9:00–10:30", k:"keynote", title:"Keynotes — 2026 AI Eng Survey · \"Verifiers are King\" · Perception Agents · Evals Intro (Laurie Voss)", room:"Main Stage", tags:["★ Keynote"], alt:""},
+      {t:"10:45–11:05", k:"pick", title:"Build-Time vs. Run-Time: Why Your Dev Tools Will Fail in Production", room:"Context Engineering", tags:["Context"], alt:"Understanding is the New Bottleneck — Geoffrey Litt"},
+      {t:"11:10–11:30", k:"pick", title:"Building a Unified Interface for LLMs — Shashank Goyal", room:"Sandbox & Platform", tags:["Platform","Multi-provider"], alt:"It's Tokens All The Way Down: How RLMs Differ"},
+      {t:"11:40–12:00", k:"pick", title:"500 Skills, Zero Fine-Tuning: LinkedIn's Playbook — Ajay Prakash", room:"Context Engineering", tags:["Skills","Case study"], alt:"Scaling Compute on Context — Jack Morris"},
+      {t:"12:05–12:25", k:"pick", title:"Prompt, Memory, Weights: Architecture Decisions Teams Make by Accident", room:"Context Engineering", tags:["Context","Architecture"], alt:"Your agents lack context: fixing \"You're absolutely right!\""},
+      {t:"12:25–1:30", k:"net", title:"Lunch + Expo", room:"", tags:["Networking"], alt:""},
+      {t:"1:30–1:50", k:"pick", title:"How long can your skills be before your agent forgets? — Laurie Voss", room:"Context Engineering", tags:["Skills","Evals"], alt:"Adaption Labs: Gradient-Free Continual Learning — Sara Hooker"},
+      {t:"1:55–2:15", k:"pick", title:"Cut Through the Context Hype: 4 Layers Your Agent Is Missing — Prukalpa Sankar", room:"Context Engineering", tags:["Context"], alt:"Improving Agents is a Data Mining Problem"},
+      {t:"2:25–2:45", k:"pick", title:"MCP Apps — Extending the frontier — Liad Yosef, Ido Salomon", room:"Context Engineering", tags:["MCP"], alt:"Self-Improvement of Context, Harness & Weights — L. Agrawal"},
+      {t:"2:50–3:10", k:"pick", title:"1,000 Agent Tasks in a Sandbox: What Breaks When LLMs Write & Run Code — Kevin Orellana", room:"Sandbox & Platform", tags:["Reliability"], alt:"Designing Agents (The Floor Is the Frontier) — Ben Hylak"},
+      {t:"3:20–3:40", k:"pick", title:"Lessons from Studying Every Memory System — Shlok Khemani", room:"Memory", tags:["Memory"], alt:"Sandboxes Aren't Optional: Runtime Isolation Patterns"},
+      {t:"3:45–4:05", k:"pick", title:"LLM Knowledge Bases: a practical guide — Ben Holmes", room:"Memory", tags:["Memory","Practical"], alt:"The Universal Remote Control for AI — Alex Hancock"},
+      {t:"4:30–5:30", k:"keynote", title:"Closing keynotes — Addy Osmani · \"Trends in AI\" (Artificial Analysis) · LMArena", room:"Main Stage", tags:["★ Keynote"], alt:""},
+      {t:"PM", k:"net", title:"Hands-on anchor option (Track 4): John Lindquist \"Agentic Power User's Playbook: Swarm-Style Development\" (1:30–2:45)", room:"Track 4", tags:["Workshop alt"], alt:""}
+    ]},
+  { id:"d4", label:"Day 4 · Thu", sub:"Jul 2 · Agentic + Harness ⭐", date:"2026-07-02",
+    slots:[
+      {t:"9:00–10:30", k:"keynote", title:"Keynotes — ⭐Matt Pocock \"Building Great Agent Skills\" · John Ousterhout · Mike Krieger (Anthropic) · Emil Eifrem", room:"Main Stage", tags:["★ Keynote"], alt:""},
+      {t:"10:45–11:05", k:"pick", title:"Tokens Should Have Jobs", room:"Harness Engineering", tags:["Harness"], alt:"Local AI State of the Union Pt 1 (OSS anchor, runs to 11:30)"},
+      {t:"11:10–11:30", k:"pick", title:"MCPs, CLIs, and Skills: Choosing the Right Tooling Layer — Nikita Kothari", room:"Agentic Engineering", tags:["Agents","Tooling"], alt:"Anthropic's CCA Exam as a Field-Guide — Frank Coyle"},
+      {t:"11:40–12:00", k:"pick", title:"Auth for Agents: Unblock Autonomous AI with auth.md — Michael Grinich", room:"Agentic Engineering", tags:["Agents","Auth"], alt:"Guide, Verify, Solve"},
+      {t:"12:05–12:25", k:"pick", title:"Harness Engineering: Building the Production Cage for Domain Agents — Mike Chambers", room:"Harness Engineering", tags:["Harness"], alt:"Benchmarking Coding Agents on New vs Legacy Code"},
+      {t:"12:25–1:30", k:"net", title:"Lunch + Expo", room:"", tags:["Networking"], alt:""},
+      {t:"1:30–1:50", k:"pick", title:"Building on the Codex Harness — Dominik Kundel", room:"Agentic Engineering", tags:["OpenAI","Harness"], alt:"What's New in Inference Engineering — Philip Kiely"},
+      {t:"1:55–2:15", k:"pick", title:"The reliable agent stack — Giselle van Dongen", room:"Harness Engineering", tags:["Reliability","Evals"], alt:"Multiplayer agentic engineering — Arjun Singh"},
+      {t:"2:25–2:45", k:"pick", title:"We let an AI agent execute Bash and lived to talk about it — Sarah Sanders", room:"Harness Engineering", tags:["Harness","Safety"], alt:"Always-on agents run production without the on-call tax"},
+      {t:"2:50–3:10", k:"pick", title:"No Memory, No Harness: The Database Is the Last Line of Defense — Kay Malcolm", room:"Harness Engineering", tags:["Harness","Memory"], alt:"Realtime multiplayer, automation, and you! — Idan Gazit"},
+      {t:"3:20–3:40", k:"pick", title:"We Solved Agent Building: Evolution of a Data-Science Agent — Andrew Qu", room:"Harness Engineering", tags:["Harness","Case study"], alt:"Two Bugs in vLLM: A Debugging Detective Story"},
+      {t:"3:45–4:05", k:"pick", title:"Agents Without Code: Skills, YAML & Filesystems Replaced Python — Philipp Schmid", room:"Harness Engineering", tags:["Skills","Claude"], alt:"Open Source Is Dead. Long Live Open Source — Saoud Rizwan"},
+      {t:"4:30–5:30", k:"keynote", title:"Closing keynotes — Theo Browne · Garry Tan · Startup Battlefield (Howie Liu)", room:"Main Stage", tags:["★ Keynote"], alt:""}
+    ]}
+];
+
+const tabsEl=document.getElementById('tabs'), daysEl=document.getElementById('days');
+const STORE='aiewf2026-checks';
+let checks=JSON.parse(localStorage.getItem(STORE)||'{}');
+
+DATA.forEach((d,i)=>{
+  const tab=document.createElement('div');
+  tab.className='tab'+(i===0?' active':''); tab.dataset.day=d.id;
+  tab.innerHTML=`${d.label}<small>${d.sub}</small>`;
+  tab.onclick=()=>selectDay(d.id);
+  tabsEl.appendChild(tab);
+
+  const day=document.createElement('div');
+  day.className='day'+(i===0?' active':''); day.id=d.id;
+  d.slots.forEach((s,j)=>{
+    const key=d.id+'-'+j;
+    const checked=checks[key]?'checked':'';
+    const tagHtml=(s.tags||[]).map(t=>`<span class="tag${t.startsWith('★')?' star':''}">${t}</span>`).join('');
+    const altHtml=s.alt?`<button class="altbtn" data-key="${key}">↔ backup</button><div class="alt" id="alt-${key}">↔ <b>Backup:</b> ${s.alt}</div>`:'';
+    const slot=document.createElement('div');
+    slot.className='slot kind-'+s.k+(checked?' done':'');
+    slot.innerHTML=`
+      <div class="time">${s.t}</div>
+      <div class="body">
+        <div class="title">${s.title}</div>
+        <div class="tags">${s.room?`<span class="by">${s.room}</span>`:''}${tagHtml}</div>
+        ${altHtml}
+      </div>
+      ${s.k==='pick'?`<label class="chk"><input type="checkbox" data-key="${key}" ${checked}/></label>`:''}`;
+    day.appendChild(slot);
+  });
+  daysEl.appendChild(day);
+});
+
+function selectDay(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.day===id));
+  document.querySelectorAll('.day').forEach(d=>d.classList.toggle('active',d.id===id));
+  updateCount();
+}
+function updateCount(){
+  const active=document.querySelector('.day.active');
+  const picks=active.querySelectorAll('input[type=checkbox]').length;
+  const done=active.querySelectorAll('input[type=checkbox]:checked').length;
+  document.getElementById('count').textContent=`${done} / ${picks} sessions checked off today`;
+}
+daysEl.addEventListener('change',e=>{
+  if(e.target.type==='checkbox'){
+    const k=e.target.dataset.key;
+    checks[k]=e.target.checked; localStorage.setItem(STORE,JSON.stringify(checks));
+    e.target.closest('.slot').classList.toggle('done',e.target.checked);
+    updateCount();
+  }
+});
+daysEl.addEventListener('click',e=>{
+  if(e.target.classList.contains('altbtn')){
+    document.getElementById('alt-'+e.target.dataset.key).classList.toggle('show');
+  }
+});
+let allShown=false;
+document.getElementById('expandAll').onclick=()=>{
+  allShown=!allShown;
+  document.querySelectorAll('.alt').forEach(a=>a.classList.toggle('show',allShown));
+  document.getElementById('expandAll').textContent=allShown?'↔ Hide backups':'↔ Show all backups';
+};
+document.getElementById('reset').onclick=()=>{
+  if(!confirm('Clear all your checkmarks?'))return;
+  checks={}; localStorage.removeItem(STORE);
+  document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
+  document.querySelectorAll('.slot').forEach(s=>s.classList.remove('done'));
+  updateCount();
+};
+updateCount();
+</script>
+</body>
+</html>

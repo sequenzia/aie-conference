@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Claude Code — personal, machine-specific local settings (keep out of git)
+.claude/settings.local.json

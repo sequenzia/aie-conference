@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "aie-worldsfair-2026": {
+      "type": "http",
+      "url": "https://www.ai.engineer/worldsfair/2026/mcp"
+    }
+  }
+}
