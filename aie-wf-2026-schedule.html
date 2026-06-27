@@ -71,8 +71,8 @@
   .desc.empty{color:var(--muted);font-style:italic}
   .altrow{font-size:.8rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:7px;margin-top:2px}
   .altrow b{color:#c9b6ff;font-weight:600}
-  .sitelink{display:inline-block;margin-top:8px;font-size:.78rem;color:var(--accent);text-decoration:none}
-  .sitelink:hover{text-decoration:underline}
+  .slot.clickable{cursor:pointer;transition:box-shadow .15s}
+  .slot.clickable:hover{box-shadow:0 0 0 1px var(--accent)}
   .chk{flex:0 0 auto;padding-top:1px}
   .chk input{width:18px;height:18px;accent-color:var(--accent2);cursor:pointer}
   .done .title{text-decoration:line-through;opacity:.55}
@@ -1129,7 +1129,6 @@
 
 <script>
 const DATA = JSON.parse(document.getElementById('sched').textContent);
-const SCHED_URL = "https://ai.engineer/worldsfair/2026/schedule";
 const tabsEl = document.getElementById('tabs');
 const daysEl = document.getElementById('days');
 const STORE = 'aiewf2026-checks-v2';
@@ -1200,16 +1199,13 @@ DATA.forEach((d, di) => {
         a.appendChild(document.createTextNode(s.alt));
         det.appendChild(a);
       }
-      const link = el('a', 'sitelink');
-      link.href = SCHED_URL; link.target = '_blank'; link.rel = 'noopener';
-      link.textContent = 'Find on the official schedule ↗';
-      det.appendChild(link);
-
       body.appendChild(det);
-      btn.onclick = () => {
+      slot.classList.add('clickable');
+      slot.addEventListener('click', (e) => {
+        if (e.target.closest('a') || e.target.closest('.chk')) return;
         det.classList.toggle('show');
         btn.textContent = det.classList.contains('show') ? 'ⓘ hide details' : 'ⓘ details';
-      };
+      });
     }
     slot.appendChild(body);
 
