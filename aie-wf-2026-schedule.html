@@ -78,8 +78,28 @@
   .done .title{text-decoration:line-through;opacity:.55}
   footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:26px}
   footer a{color:var(--accent)}
+  button.act:disabled{opacity:.45;cursor:default}
+  button.act.on{border-color:var(--accent);background:rgba(124,92,255,.18);color:var(--txt)}
+  /* multi-select + export */
+  .sel{flex:0 0 auto;display:none;padding-top:1px}
+  body.selecting .sel{display:block}
+  .sel input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+  body.selecting .slot{cursor:pointer}
+  .slot.selected{box-shadow:inset 0 0 0 1px var(--accent);background:linear-gradient(180deg,rgba(124,92,255,.13),transparent)}
+  .exportbar{position:fixed;left:0;right:0;bottom:0;z-index:20;transform:translateY(120%);
+    transition:transform .2s ease;background:var(--panel2);border-top:1px solid var(--accent);
+    box-shadow:0 -10px 30px rgba(0,0,0,.45)}
+  .exportbar.show{transform:none}
+  .exportbar .inner{max-width:980px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .exportbar .selcount{font-size:.85rem;color:var(--txt);margin-right:auto}
+  .exportbar .selcount b{color:var(--accent2)}
+  .exportbar .selcount span{color:var(--muted)}
+  .toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%) translateY(16px);opacity:0;
+    background:var(--accent2);color:#04130c;font-size:.82rem;font-weight:600;padding:8px 14px;border-radius:8px;
+    transition:.2s;pointer-events:none;z-index:30}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   @media print{
-    .tabs,.toolbar,.detailbtn,.chk,header .meta,header .links{display:none!important}
+    .tabs,.toolbar,.detailbtn,.chk,.sel,.exportbar,.toast,header .meta,header .links{display:none!important}
     .day{display:block!important} .detail{display:block!important}
     body{background:#fff;color:#000} .slot{break-inside:avoid;border-color:#ccc;background:#fff}
     .pill,.tag,.by,.desc,.who,.altrow,.aff,.spk,.slink{color:#222} .title{color:#000}
@@ -118,6 +138,7 @@
   <div class="toolbar">
     <span class="count" id="count"></span>
     <div class="btns">
+      <button class="act" id="selectToggle">☑ Select</button>
       <button class="act" id="expandAll">ⓘ Expand all details</button>
       <button class="act" id="reset">Reset checks</button>
       <button class="act" onclick="window.print()">🖨 Print / PDF</button>
@@ -125,6 +146,19 @@
   </div>
 
   <div id="days"></div>
+
+  <div class="exportbar" id="exportbar">
+    <div class="inner">
+      <div class="selcount" id="selcount"></div>
+      <button class="act" id="selAllDay">Select all today</button>
+      <button class="act" id="selClear">Clear</button>
+      <button class="act" id="expCopy">📋 Copy list</button>
+      <button class="act" id="expMd">⬇ Markdown</button>
+      <button class="act" id="expIcs">📅 Calendar (.ics)</button>
+      <button class="act" id="selDone">Done</button>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
 
   <footer>
     Built for an Engineering + Workshops ticket — access-checked (no Leadership rooms). Session details from the
@@ -1133,6 +1167,9 @@ const tabsEl = document.getElementById('tabs');
 const daysEl = document.getElementById('days');
 const STORE = 'aiewf2026-checks-v2';
 let checks = JSON.parse(localStorage.getItem(STORE) || '{}');
+const SEL = 'aiewf2026-selected-v1';
+let selected = new Set(JSON.parse(localStorage.getItem(SEL) || '[]'));
+let selecting = false;
 
 function el(tag, cls){ const e = document.createElement(tag); if(cls) e.className = cls; return e; }
 
@@ -1149,7 +1186,15 @@ DATA.forEach((d, di) => {
   d.slots.forEach((s, si) => {
     const key = di + '-' + si;
     const checked = !!checks[key];
-    const slot = el('div', 'slot kind-' + s.k + (s.anchor ? ' anchor' : '') + (checked ? ' done' : ''));
+    const isSel = selected.has(key);
+    const slot = el('div', 'slot kind-' + s.k + (s.anchor ? ' anchor' : '') + (checked ? ' done' : '') + (isSel ? ' selected' : ''));
+    slot.dataset.key = key;
+
+    const selLab = el('label', 'sel');
+    const selCb = document.createElement('input');
+    selCb.type = 'checkbox'; selCb.checked = isSel;
+    selCb.addEventListener('change', () => setSelect(key, slot, selCb.checked));
+    selLab.appendChild(selCb); slot.appendChild(selLab);
 
     const time = el('div', 'time'); time.textContent = s.t; slot.appendChild(time);
 
@@ -1163,10 +1208,11 @@ DATA.forEach((d, di) => {
     if (s.anchor) { const a = el('span', 'tag'); a.textContent = '★ anchor deep-dive'; tags.appendChild(a); }
     body.appendChild(tags);
 
+    let det = null, btn = null;
     const hasDetail = (s.speakers && s.speakers.length) || s.desc || s.alt;
     if (hasDetail) {
-      const btn = el('button', 'detailbtn'); btn.textContent = 'ⓘ details'; body.appendChild(btn);
-      const det = el('div', 'detail');
+      btn = el('button', 'detailbtn'); btn.textContent = 'ⓘ details'; body.appendChild(btn);
+      det = el('div', 'detail');
 
       if (s.speakers && s.speakers.length) {
         const w = el('div', 'who');
@@ -1200,9 +1246,8 @@ DATA.forEach((d, di) => {
         det.appendChild(a);
       }
       body.appendChild(det);
-      slot.classList.add('clickable');
-      slot.addEventListener('click', (e) => {
-        if (e.target.closest('a') || e.target.closest('.chk')) return;
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         det.classList.toggle('show');
         btn.textContent = det.classList.contains('show') ? 'ⓘ hide details' : 'ⓘ details';
       });
@@ -1215,6 +1260,16 @@ DATA.forEach((d, di) => {
       cb.type = 'checkbox'; cb.dataset.key = key; cb.checked = checked;
       lab.appendChild(cb); slot.appendChild(lab);
     }
+
+    slot.classList.add('clickable');
+    slot.addEventListener('click', (e) => {
+      if (e.target.closest('a') || e.target.closest('.chk') || e.target.closest('.sel')) return;
+      if (selecting) { toggleSelect(key, slot); return; }
+      if (hasDetail && det) {
+        det.classList.toggle('show');
+        btn.textContent = det.classList.contains('show') ? 'ⓘ hide details' : 'ⓘ details';
+      }
+    });
     day.appendChild(slot);
   });
   daysEl.appendChild(day);
@@ -1227,12 +1282,12 @@ function selectDay(id){
 }
 function updateCount(){
   const active = document.querySelector('.day.active');
-  const picks = active.querySelectorAll('input[type=checkbox]').length;
-  const done = active.querySelectorAll('input[type=checkbox]:checked').length;
+  const picks = active.querySelectorAll('.chk input').length;
+  const done = active.querySelectorAll('.chk input:checked').length;
   document.getElementById('count').textContent = `${done} / ${picks} sessions checked off today`;
 }
 daysEl.addEventListener('change', e => {
-  if (e.target.type === 'checkbox') {
+  if (e.target.type === 'checkbox' && e.target.closest('.chk')) {
     checks[e.target.dataset.key] = e.target.checked;
     localStorage.setItem(STORE, JSON.stringify(checks));
     e.target.closest('.slot').classList.toggle('done', e.target.checked);
@@ -1250,10 +1305,177 @@ document.getElementById('expandAll').onclick = () => {
 document.getElementById('reset').onclick = () => {
   if (!confirm('Clear all your checkmarks?')) return;
   checks = {}; localStorage.removeItem(STORE);
-  document.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+  document.querySelectorAll('.chk input').forEach(c => c.checked = false);
   document.querySelectorAll('.slot').forEach(s => s.classList.remove('done'));
   updateCount();
 };
+
+/* ---------- multi-select + export ---------- */
+const exportbar = document.getElementById('exportbar');
+const selToggleBtn = document.getElementById('selectToggle');
+
+function persistSel(){ localStorage.setItem(SEL, JSON.stringify([...selected])); }
+
+function setSelect(key, slot, on){
+  if (on) selected.add(key); else selected.delete(key);
+  slot.classList.toggle('selected', on);
+  const cb = slot.querySelector('.sel input');
+  if (cb && cb.checked !== on) cb.checked = on;
+  persistSel(); updateSelBar();
+}
+function toggleSelect(key, slot){ setSelect(key, slot, !selected.has(key)); }
+
+function updateSelBar(){
+  const n = selected.size;
+  document.getElementById('selcount').innerHTML = n
+    ? `<b>${n}</b> session${n > 1 ? 's' : ''} selected <span>· pick an export →</span>`
+    : `No sessions selected <span>· tick the box on the left of any session</span>`;
+  ['expCopy','expMd','expIcs'].forEach(id => { document.getElementById(id).disabled = !n; });
+}
+
+function setSelecting(on){
+  selecting = on;
+  document.body.classList.toggle('selecting', on);
+  selToggleBtn.classList.toggle('on', on);
+  selToggleBtn.textContent = on ? '☑ Selecting…' : '☑ Select';
+  exportbar.classList.toggle('show', on);
+}
+selToggleBtn.onclick = () => setSelecting(!selecting);
+document.getElementById('selDone').onclick = () => setSelecting(false);
+
+document.getElementById('selAllDay').onclick = () => {
+  document.querySelector('.day.active').querySelectorAll('.slot')
+    .forEach(slot => setSelect(slot.dataset.key, slot, true));
+};
+document.getElementById('selClear').onclick = () => {
+  document.querySelectorAll('.slot.selected').forEach(slot => {
+    slot.classList.remove('selected');
+    const cb = slot.querySelector('.sel input'); if (cb) cb.checked = false;
+  });
+  selected.clear(); persistSel(); updateSelBar();
+};
+
+// Walk the data in day/slot order so exports read top-to-bottom.
+function collectSelected(){
+  const out = [];
+  DATA.forEach((d, di) => d.slots.forEach((s, si) => {
+    if (selected.has(di + '-' + si)) out.push({ d, s });
+  }));
+  return out;
+}
+function speakerList(s){
+  return (s.speakers || []).map(sp => sp.company ? `${sp.name} (${sp.company})` : sp.name).join(', ');
+}
+function buildMarkdown(){
+  const items = collectSelected();
+  let md = `# AI Engineer World's Fair 2026 — Selected Sessions\n\n`;
+  md += `_${items.length} session${items.length !== 1 ? 's' : ''} · June 29 – July 2, 2026 · Moscone West_\n`;
+  let curDay = null;
+  items.forEach(({ d, s }) => {
+    if (d.id !== curDay){ curDay = d.id; md += `\n## ${d.label} — ${d.sub}\n\n`; }
+    md += `- **${s.t}** — ${s.title}\n`;
+    const meta = [];
+    if (s.room) meta.push(`📍 ${s.room}`);
+    if (s.track) meta.push(s.track);
+    if (s.status === 'tentative') meta.push('tentative');
+    if (meta.length) md += `  ${meta.join(' · ')}\n`;
+    const who = speakerList(s);
+    if (who) md += `  👤 ${who}\n`;
+    if (s.alt) md += `  ↔ Backup: ${s.alt}\n`;
+  });
+  return md;
+}
+
+// The data stores 12h times with no am/pm; the fair runs ~8am–8pm, so hours
+// 8–11 are morning, 12 is noon, and 1–7 are afternoon/evening.
+function to24(h){ if (h === 12) return 12; if (h >= 1 && h <= 7) return h + 12; return h; }
+function pad(n){ return String(n).padStart(2, '0'); }
+function icsTime(dateStr, timeStr){
+  const [Y, M, D] = dateStr.split('-').map(Number);
+  const [hh, mm] = timeStr.trim().split(':').map(Number);
+  // The conference sits entirely in PDT (UTC-7) with no DST change across the
+  // dates, so we emit plain UTC (+7h) and skip a VTIMEZONE block. Date.UTC
+  // handles hour/day rollover for late-evening sessions.
+  const dt = new Date(Date.UTC(Y, M - 1, D, to24(hh) + 7, mm || 0, 0));
+  return dt.getUTCFullYear() + pad(dt.getUTCMonth() + 1) + pad(dt.getUTCDate()) + 'T'
+       + pad(dt.getUTCHours()) + pad(dt.getUTCMinutes()) + '00Z';
+}
+function icsEscape(t){ return String(t).replace(/\\/g, '\\\\').replace(/[;,]/g, m => '\\' + m).replace(/\n/g, '\\n'); }
+function nowStamp(){
+  const d = new Date();
+  return d.getUTCFullYear() + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate()) + 'T'
+       + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + pad(d.getUTCSeconds()) + 'Z';
+}
+function buildIcs(){
+  const items = collectSelected();
+  const stamp = nowStamp();
+  const L = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//aie-wf-2026//my-schedule//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
+  items.forEach(({ d, s }, i) => {
+    const parts = s.t.split(/[–-]/).map(x => x.trim());
+    const desc = [];
+    if (s.track) desc.push('Track: ' + s.track);
+    const who = speakerList(s);
+    if (who) desc.push('Speakers: ' + who);
+    if (s.alt) desc.push('Backup: ' + s.alt);
+    if (s.status === 'tentative') desc.push('(tentative — reconfirm on the official app)');
+    L.push('BEGIN:VEVENT');
+    L.push('UID:' + i + '-' + d.date + '-' + (parts[0] || '').replace(/:/g, '') + '@aiewf2026');
+    L.push('DTSTAMP:' + stamp);
+    L.push('DTSTART:' + icsTime(d.date, parts[0]));
+    if (parts[1]) L.push('DTEND:' + icsTime(d.date, parts[1]));
+    L.push('SUMMARY:' + icsEscape(s.title));
+    if (s.room) L.push('LOCATION:' + icsEscape(s.room));
+    if (desc.length) L.push('DESCRIPTION:' + icsEscape(desc.join('\n')));
+    L.push('END:VEVENT');
+  });
+  L.push('END:VCALENDAR');
+  return L.join('\r\n');
+}
+
+function download(filename, text, mime){
+  const blob = new Blob([text], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1900);
+}
+
+document.getElementById('expCopy').onclick = async () => {
+  if (!selected.size) return;
+  const md = buildMarkdown();
+  try {
+    await navigator.clipboard.writeText(md);
+    toast('Copied ' + selected.size + ' session' + (selected.size > 1 ? 's' : '') + ' to clipboard');
+  } catch {
+    // navigator.clipboard is unavailable on file:// — fall back to execCommand.
+    const ta = document.createElement('textarea');
+    ta.value = md; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch {}
+    document.body.removeChild(ta);
+    toast(ok ? 'Copied to clipboard' : 'Copy blocked — use ⬇ Markdown instead');
+  }
+};
+document.getElementById('expMd').onclick = () => {
+  if (!selected.size) return;
+  download('aie-wf-2026-selected.md', buildMarkdown(), 'text/markdown;charset=utf-8');
+  toast('Downloaded Markdown list');
+};
+document.getElementById('expIcs').onclick = () => {
+  if (!selected.size) return;
+  download('aie-wf-2026-selected.ics', buildIcs(), 'text/calendar;charset=utf-8');
+  toast('Downloaded calendar (.ics)');
+};
+
+updateSelBar();
 updateCount();
 </script>
 </body>

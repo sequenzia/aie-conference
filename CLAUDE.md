@@ -47,7 +47,8 @@ without re-doing discovery or re-running the interview.
 
 - `aie-wf-2026-schedule.md` — the schedule (picks + backup/alt per slot). **Source of truth for the plan.**
 - `aie-wf-2026-schedule.html` — self-contained interactive page (day tabs, reveal backups, check-off
-  boxes persisted in `localStorage`, Print→PDF). No build step / no network.
+  boxes persisted in `localStorage`, multi-select + export of chosen sessions to Markdown/clipboard or
+  `.ics` calendar, Print→PDF). No build step / no network.
 
 The schedule is also mirrored as **46 Google Calendar events** on my primary calendar
 (Sequenzia Gmail), in Pacific time, color-coded (keynote=Banana, pick=Blueberry, Day-1 anchor=Tomato,
