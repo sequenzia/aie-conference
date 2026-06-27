@@ -58,8 +58,8 @@
 | 12:25–1:30 | 🟢 **Lunch + Expo** | — | — |
 | 1:30–1:50 | **How long can your skills be before your agent forgets?** — Laurie Voss | Context Engineering | Adaption Labs: Gradient-Free Continual Learning — Sara Hooker |
 | 1:55–2:15 | **Cut Through the Context Hype: 4 Layers Your Agent Is Missing** — Prukalpa Sankar | Context Engineering | Improving Agents is a Data Mining Problem |
-| 2:25–2:45 | **MCP Apps — Extending the frontier** — Liad Yosef, Ido Salomon | Context Engineering | Self-Improvement of Context, Harness & Weights — L. Agrawal |
-| 2:50–3:10 | **1,000 Agent Tasks in a Sandbox: What Breaks When LLMs Write & Run Code** — Kevin Orellana | Sandbox & Platform | Designing Agents (The Floor Is the Frontier) — Ben Hylak |
+| 2:25–2:45 | **1,000 Agent Tasks in a Sandbox: What Breaks When LLMs Write & Run Code** — Kevin Orellana | Sandbox & Platform | MCP Apps — Extending the frontier — Liad Yosef, Ido Salomon |
+| 2:50–3:10 | **MCP Apps: Give the Model Data, Give the User a UI** — Dustin Mihalik | Context Engineering | Designing Agents (The Floor Is the Frontier) — Ben Hylak |
 | 3:20–3:40 | **Lessons from Studying Every Memory System** — Shlok Khemani | Memory | Sandboxes Aren't Optional: Runtime Isolation Patterns |
 | 3:45–4:05 | **LLM Knowledge Bases: a practical guide** — Ben Holmes | Memory | The Universal Remote Control for AI — Alex Hancock |
 | 4:30–5:30 | 🎤 **Closing keynotes** — Addy Osmani · "Trends in AI" (Artificial Analysis) · LMArena | Main | — |

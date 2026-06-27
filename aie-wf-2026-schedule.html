@@ -8,7 +8,7 @@
   :root{
     --bg:#0e1116; --panel:#161b22; --panel2:#1c232d; --line:#2a3340;
     --txt:#e6edf3; --muted:#9aa7b4; --accent:#7c5cff; --accent2:#19c37d;
-    --keynote:#f5a623; --net:#19c37d; --pick:#7c5cff; --chip:#243044;
+    --keynote:#f5a623; --net:#19c37d; --pick:#7c5cff; --chip:#243044; --tent:#e0683c;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -20,7 +20,10 @@
   .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
   .pill{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:.78rem;color:var(--muted)}
   .pill b{color:var(--txt);font-weight:600}
-  .wrap{max-width:960px;margin:0 auto;padding:18px 16px 80px}
+  .links{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:.84rem}
+  .links a{color:var(--accent);text-decoration:none}
+  .links a:hover{text-decoration:underline}
+  .wrap{max-width:980px;margin:0 auto;padding:18px 16px 80px}
   .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.8rem;color:var(--muted);margin:14px 2px 6px}
   .legend span{display:inline-flex;align-items:center;gap:6px}
   .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
@@ -33,7 +36,7 @@
               color:var(--txt);border-color:var(--accent)}
   .toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 2px 8px;flex-wrap:wrap}
   .count{font-size:.82rem;color:var(--muted)}
-  .btns{display:flex;gap:8px}
+  .btns{display:flex;gap:8px;flex-wrap:wrap}
   button.act{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:8px;
              padding:7px 12px;font-size:.8rem;cursor:pointer}
   button.act:hover{border-color:var(--accent)}
@@ -45,28 +48,34 @@
   .slot.kind-keynote{border-left:3px solid var(--keynote)}
   .slot.kind-net{border-left:3px solid var(--net)}
   .slot.kind-pick{border-left:3px solid var(--pick)}
-  .time{flex:0 0 96px;font-variant-numeric:tabular-nums;font-size:.82rem;color:var(--muted);padding-top:2px}
+  .slot.anchor{border-left:3px solid var(--tent);background:linear-gradient(180deg,rgba(224,104,60,.08),transparent)}
+  .time{flex:0 0 92px;font-variant-numeric:tabular-nums;font-size:.82rem;color:var(--muted);padding-top:2px}
   .body{flex:1;min-width:0}
   .title{font-weight:600;font-size:.98rem}
-  .by{color:var(--muted);font-weight:400}
   .tags{margin-top:5px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-  .tag{font-size:.72rem;background:var(--chip);border:1px solid var(--line);color:var(--muted);
-       border-radius:6px;padding:2px 8px}
-  .tag.star{color:var(--keynote);border-color:rgba(245,166,35,.4)}
-  .alt{margin-top:7px;font-size:.82rem;color:var(--muted);display:none}
-  .alt.show{display:block}
-  .alt b{color:#c9b6ff;font-weight:600}
-  .altbtn{cursor:pointer;font-size:.74rem;color:var(--accent);background:none;border:none;padding:2px 0;margin-top:4px}
+  .by{color:var(--muted);font-size:.78rem}
+  .tag{font-size:.72rem;background:var(--chip);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:2px 8px}
+  .tag.tent{color:var(--tent);border-color:rgba(224,104,60,.45)}
+  .detailbtn{cursor:pointer;font-size:.74rem;color:var(--accent);background:none;border:none;padding:4px 0 0;margin-top:4px}
+  .detail{display:none;margin-top:9px;padding:11px 12px;background:var(--panel2);border:1px solid var(--line);border-radius:9px}
+  .detail.show{display:block}
+  .who{font-size:.8rem;color:#c9b6ff;margin-bottom:6px}
+  .desc{font-size:.86rem;color:#cdd6e0;margin:0 0 8px;white-space:pre-wrap}
+  .desc.empty{color:var(--muted);font-style:italic}
+  .altrow{font-size:.8rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:7px;margin-top:2px}
+  .altrow b{color:#c9b6ff;font-weight:600}
+  .sitelink{display:inline-block;margin-top:8px;font-size:.78rem;color:var(--accent);text-decoration:none}
+  .sitelink:hover{text-decoration:underline}
   .chk{flex:0 0 auto;padding-top:1px}
   .chk input{width:18px;height:18px;accent-color:var(--accent2);cursor:pointer}
   .done .title{text-decoration:line-through;opacity:.55}
   footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:26px}
-  a{color:var(--accent)}
+  footer a{color:var(--accent)}
   @media print{
-    .tabs,.toolbar,.altbtn,.chk,header .meta{display:none!important}
-    .day{display:block!important} .alt{display:block!important}
+    .tabs,.toolbar,.detailbtn,.chk,header .meta,header .links{display:none!important}
+    .day{display:block!important} .detail{display:block!important}
     body{background:#fff;color:#000} .slot{break-inside:avoid;border-color:#ccc;background:#fff}
-    .pill,.tag{color:#333}
+    .pill,.tag,.by,.desc,.who,.altrow{color:#222} .title{color:#000}
   }
 </style>
 </head>
@@ -81,6 +90,11 @@
     <span class="pill">Tie-breaker: <b>Hands-on</b></span>
     <span class="pill">Networking: <b>Protected</b></span>
   </div>
+  <div class="links">
+    <a href="https://ai.engineer/worldsfair" target="_blank" rel="noopener">🌐 Conference site ↗</a>
+    <a href="https://ai.engineer/worldsfair/2026/schedule" target="_blank" rel="noopener">📅 Official schedule ↗</a>
+    <a href="https://youtube.com/@aidotengineer" target="_blank" rel="noopener">▶ Talks on YouTube ↗</a>
+  </div>
 </header>
 
 <div class="wrap">
@@ -88,7 +102,7 @@
     <span><i class="dot" style="background:var(--pick)"></i> Pick</span>
     <span><i class="dot" style="background:var(--keynote)"></i> Keynote</span>
     <span><i class="dot" style="background:var(--net)"></i> Networking</span>
-    <span>⭐ marquee · ↔ shows backup pick · ☑ check off as you go (saved in this browser)</span>
+    <span>ⓘ details = speakers + full description · ↔ backup pick · ☑ check off (saved in this browser)</span>
   </div>
 
   <div class="tabs" id="tabs"></div>
@@ -96,7 +110,7 @@
   <div class="toolbar">
     <span class="count" id="count"></span>
     <div class="btns">
-      <button class="act" id="expandAll">↔ Show all backups</button>
+      <button class="act" id="expandAll">ⓘ Expand all details</button>
       <button class="act" id="reset">Reset checks</button>
       <button class="act" onclick="window.print()">🖨 Print / PDF</button>
     </div>
@@ -105,143 +119,791 @@
   <div id="days"></div>
 
   <footer>
-    Generated for an Engineering + Workshops ticket — access-checked (no Leadership rooms).
-    Breakout talks are 20 min; the backup (↔) is your live pivot list. Confirm tentative rooms on the official app.
+    Built for an Engineering + Workshops ticket — access-checked (no Leadership rooms). Session details from the
+    official <code>aie-worldsfair-2026</code> data source; some were tentative — reconfirm on the
+    <a href="https://ai.engineer/worldsfair" target="_blank" rel="noopener">official site</a> the day of.
   </footer>
 </div>
 
+<script type="application/json" id="sched">
+[
+  {
+    "id": "d1",
+    "label": "Day 1 · Mon",
+    "sub": "Jun 29 · Workshops",
+    "date": "2026-06-29",
+    "slots": [
+      {
+        "t": "9:00–11:00",
+        "k": "pick",
+        "anchor": false,
+        "title": "Total Recall: Agent Memory and Harness Engineering",
+        "room": "Track 6",
+        "track": "Workshops Day 1",
+        "speakers": [
+          "Ignacio Martinez"
+        ],
+        "status": "confirmed",
+        "desc": "In this hands-on workshop you'll build a working autonomous agent from the harness up, in a notebook, then see it live in a full working web application and leave with one that can write and run its own automations. You'll implement every surface area yourself: a set of predefined tools, persistent memory through the Oracle AI Agent Memory package, orchestration with LangChain and LangGraph, and LLM access through OCI GenAI Service, composing the full set of Oracle primitives into one harness you understand end to end.\n\nMost teams assemble that harness from a dozen disconnected services: one store for vectors, another for state, a separate reranker, a bolt-on memory layer. We take the opposite approach, on a single unified memory core. The organizing principle is optionality by default: you shouldn't have to choose your memory substrate up front. With Oracle AI Database you get file system and database memory in one place, embedding models and rerankers running inside the database kernel, and every retrieval strategy an AI workload needs without leaving the core.\n\nAnd consolidating onto one core is what keeps the whole thing tractable. You know the drill: a production harness has you holding all those moving parts in your head at once, and most of your attention goes to keeping them in sync rather than improving the agent. Pull that sprawl into a single core and the cognitive load drops. You get to think about what the agent does, not where its state lives. That's the difference between controlling your harness and renting its pieces.",
+        "alt": "Cooking with Codex (Track 3)"
+      },
+      {
+        "t": "11:05–12:05",
+        "k": "pick",
+        "anchor": false,
+        "title": "How to Build Quality Gates into Agentic Coding Workflows",
+        "room": "Track 7",
+        "track": "Workshops Day 1",
+        "speakers": [
+          "Nnenna Ndukwe"
+        ],
+        "status": "confirmed",
+        "desc": "AI coding agents can now generate code at unprecedented speed. But faster code generation creates a new engineering problem: how do we know when agent-written code is actually safe, maintainable, and ready to merge? In this hands-on workshop, attendees will build an agentic coding workflow with enforceable code quality gates across planning, implementation, testing, and code review. By the end of the session, participants will have a working reference pattern for agentic software delivery: an AI-assisted workflow that can inspect a repo, implement a change, run tests, evaluate risk, respond to feedback, and surface what still requires human judgment. This is a technical enablement session for engineers building with AI coding agents, platform teams designing agentic SDLC workflows, and AI engineering leaders thinking about how to scale software quality with AI.",
+        "alt": "How I learned to stop worrying and love the sandbox (Track 3)"
+      },
+      {
+        "t": "12:10–1:10",
+        "k": "pick",
+        "anchor": false,
+        "title": "Lifestyles of the AI-Native: Voice-coding, agent skills, hooks and scheduled tasks",
+        "room": "Track 2",
+        "track": "Workshops Day 1",
+        "speakers": [
+          "Nick Nisi",
+          "Zack Proser"
+        ],
+        "status": "confirmed",
+        "desc": "Most engineers are bolting AI onto a workflow that was designed for a pre-AI world. The result is a faster version of the same grind. This talk is about the other path: rebuilding the daily practice of software engineering from the ground up, around what agents are actually good at.\n\nTwo senior practitioners from WorkOS will walk through how we actually work now as AI-native engineers — not in the aspirational sense, but the literal one. We think out loud and voice-code instead of typing our way to clarity. We package recurring expertise into agent skills so we're not re-explaining context every session. We wire up hooks that fire on the events we care about, and hand off scheduled tasks to agents that run overnight, while we're away from the keyboard, or otherwise off the clock. The throughline is intentional design: deciding what a human should hold onto and what should be delegated, then building the machinery to make that real.\n\nBecause there are two of us, you'll see more than one set of habits — where our setups converge on the same patterns, and where they diverge based on how each of us thinks and works. The pitch isn't \"do more.\" It's that an AI-native setup, designed deliberately, buys back attention and protects you from the burnout that comes from treating agents as a turbocharger for an old loop. Attendees will leave with a concrete mental model for voice-driven development, a pattern for authoring reusable agent skills, and working examples of hooks and scheduled automations they can adapt the same week.",
+        "alt": "Beyond RAG: Build a Relational Context Engine from Scratch (Track 7)"
+      },
+      {
+        "t": "1:15–2:15",
+        "k": "net",
+        "anchor": false,
+        "title": "Lunch + Expo",
+        "room": "",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Protected networking time. Optional hands-on instead: Turning My Obsidian Vault Into a Local AI Engineer (Track 8).",
+        "alt": ""
+      },
+      {
+        "t": "2:20–4:20",
+        "k": "pick",
+        "anchor": true,
+        "title": "Context Engineering in 2026: Compaction, Memory & Cost",
+        "room": "Track 6",
+        "track": "",
+        "speakers": [
+          "Louis-François Bouchard",
+          "Samridhi Vaid",
+          "Omar Solano"
+        ],
+        "status": "confirmed",
+        "desc": "Every long agent session eventually breaks: the assistant that swore it would \"never push to main\" does exactly that forty turns later. The model didn't get dumber — its context did. This workshop is about engineering the context window so that stops happening, shown with Towards AI's open-source AI tutor, which answers questions for students of our AI-engineering courses. Context engineering is deciding what the model sees on every single call — instructions, history, retrieved course content, memory, and tool outputs — and it's the line between a tutor that holds a coherent session and one that forgets the student's setup halfway through. We'll move in three stages, mirroring how the project actually went. The concepts: the two root problems (a finite window, a stateless model), the full compaction toolkit (truncation, trimming, tool-result clearing, summarization, and offloading to files — and when each actually helps), memory that survives across sessions, skills loaded on demand, and production-grade retrieval (chunking, metadata, course scoping, hybrid search, reranking, and evaluating). We'll cover the tutor's architecture, and the evaluation harness we used to measure every run on Gemini — tokens, cost, latency, and memory probes instead of vibe-checks. At real volume, even Gemini Flash got expensive, so we tested whether open and local models could match the quality for a fraction of the cost and match result quality. Everything is open-source and will be shared during the workshop.",
+        "alt": "From Vibes to Production: Evaluating & Shipping AI Agents 201 (Track 1)"
+      },
+      {
+        "t": "4:30–5:30",
+        "k": "pick",
+        "anchor": false,
+        "title": "The Dark Arts of Skill Engineering",
+        "room": "Track 2",
+        "track": "",
+        "speakers": [
+          "Paul Bakaus"
+        ],
+        "status": "confirmed",
+        "desc": "Most agent skills are a system prompt and a prayer. They produce safe, median output because that's what LLMs default to. After building 24 design skills across 9 AI platforms, I found the patterns that break through that ceiling, and they're rarely documented or discussed. Make your agents argue: spawn parallel sub-agents that independently evaluate the same work, then force their conflicting opinions into a single result. The output is bolder than any single agent would dare. Build mixture-of-expert skills that route to specialized sub-agents the way frontier models route to specialized networks. Give your skills memory through persistent context files that restore across sessions, so every invocation builds on the last. Wire up skill hooks that auto-activate after execution to validate, transform, or chain into the next skill. Exploit barely documented environment variables and shell expansion to make skills context-aware before they even run. Let's dig into the dark arts of skill engineering to craft ultra powerful skills.",
+        "alt": "Hill-climbing Skills: Improve Agents Without Touching the Model (Track 4)"
+      },
+      {
+        "t": "6:00–7:15",
+        "k": "net",
+        "anchor": false,
+        "title": "Expo Welcome + Runway AI Film Festival",
+        "room": "",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Social kickoff / networking.",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": "d2",
+    "label": "Day 2 · Tue",
+    "sub": "Jun 30 · Coding & Retrieval",
+    "date": "2026-06-30",
+    "slots": [
+      {
+        "t": "9:00–10:30",
+        "k": "keynote",
+        "anchor": false,
+        "title": "Keynotes — swyx · Thom Wolf · OpenAI · GLM-5.2",
+        "room": "Main Stage",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Three Years of AI Engineering (swyx) · On AI and Knowledge (Pablo Castro) · OpenAI opening (Embiricos/Huet) · Thom Wolf · GLM-5.2 open weights.",
+        "alt": ""
+      },
+      {
+        "t": "10:45–11:05",
+        "k": "pick",
+        "anchor": false,
+        "title": "Getting the most out of Codex",
+        "room": "Main Stage",
+        "track": "Software Factories",
+        "speakers": [
+          "Jason Liu"
+        ],
+        "status": "confirmed",
+        "desc": null,
+        "alt": "Security Firewall for Agents — Ryan Dahl"
+      },
+      {
+        "t": "11:10–11:30",
+        "k": "pick",
+        "anchor": false,
+        "title": "Your Agent Didn’t Fail. Your Harness Did.",
+        "room": "Track 1",
+        "track": "Claws & Personal Agents",
+        "speakers": [
+          "Vinoth Govindarajan"
+        ],
+        "status": "confirmed",
+        "desc": "AI agents do not fail only because the model is wrong. Many production failures happen in the harness around the model: state is not persisted, two runs mutate the same session, a tool call never returns, an approval loses scope, or an internal success never becomes user-visible proof. This talk uses OpenClaw as a public case study to examine real harness failure modes and extract a reusable production model for AI engineers. We will look at how events enter an agent system, how session state is rehydrated, why single-writer lanes and throttles matter, and why tool execution needs scoped approvals and auditable receipts. The core idea is simple: a model proposes, the harness commits, and the receipt proves it. Attendees will leave with a practical 'run receipt' audit they can apply to their own agents: what woke it up, which state did it inherit, what authority did it use, what executed, and what evidence survived.",
+        "alt": "The unreasonable effectiveness of BM25 for agentic search"
+      },
+      {
+        "t": "11:40–12:00",
+        "k": "pick",
+        "anchor": false,
+        "title": "Gadgets: Personal app vibe coding that is actually safe",
+        "room": "Track 1",
+        "track": "Software Factories",
+        "speakers": [
+          "Kenton Varda"
+        ],
+        "status": "confirmed",
+        "desc": "We are entering the end game of Kenton's 15-year master plan. The architect of Cloudflare Workers, Durable Objects, Cap'n Proto, and Sandstorm.io, and the guy who coined the term \"Code Mode\", will demo Gadgets, an AI productivity suite which ties all these ideas together. We've all heard that the future is micro-apps customized for every niche, but how do we actually make that usable, how do we make it scale, and most importantly, how do we make it safe for even non-developers to use? Kenton will show how Gadgets solves these problems, including a sandbox design that makes it essentially impossible for apps to have vulnerabilities at all. He'll then open source it for your slop-forking pleasure.",
+        "alt": "The Search Engine for the Agentic Web — Will Bryk"
+      },
+      {
+        "t": "12:05–12:25",
+        "k": "pick",
+        "anchor": false,
+        "title": "What we learned by analyzing 1M AI-generated PRs",
+        "room": "Main Stage",
+        "track": "Software Factories",
+        "speakers": [
+          "Daksh Gupta"
+        ],
+        "status": "confirmed",
+        "desc": "We analyzed >1M end-to-end AI generated PRs reviewed by Greptile to understand what types of bugs they tend to create and some strategies on mitigating them. For instance, did you know that Claude Code is nearly 3X more likely than Codex to introduce auth bypass vulnerabilities?",
+        "alt": "Rebuilding the web for agents — Liad Yosef"
+      },
+      {
+        "t": "12:25–1:30",
+        "k": "net",
+        "anchor": false,
+        "title": "Lunch + Expo floor",
+        "room": "",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Protected networking — Day 2 is your secondary-interest day, so work the expo floor.",
+        "alt": ""
+      },
+      {
+        "t": "1:30–1:50",
+        "k": "pick",
+        "anchor": false,
+        "title": "If we want them to do Knowledge Work, we need to design Knowledge Agents",
+        "room": "Track 3",
+        "track": "Search & Retrieval",
+        "speakers": [
+          "Benjamin Clavié"
+        ],
+        "status": "confirmed",
+        "desc": "It's tempting to assume that just like agents revolutionised coding, they will revolutionize other areas: legal, finance, advertising, and even medicine. All of those have in common that they are fundamentally knowledge work. And thankfully, humans have spent thousands of years searching for the best possible workflows for knowledge work. And yet, we seem to be disregarding all of these learnings, forcing every knowledge task into the shape that worked for coding. Today, we're going to talk about the history of knowledge work and how tools were co-designed to support it to understand how we should be building Knowledge Agents, themselves co-designed with their Knowledge Tools. This is key to avoiding falling into a \"good enough\" local optimum: think about legal clerking, a core part of the legal industry where information gathering and reasoning is performed to support the work of senior lawyers. The practice of clerking follows its own code, rules and best practices, which could not have feasibly emerged from studying software engineering: and similarly, there is no reason to believe knowledge agents could emerge from coding agents.",
+        "alt": "Agents' next frontier: agent-to-agent & network effects"
+      },
+      {
+        "t": "1:55–2:15",
+        "k": "pick",
+        "anchor": false,
+        "title": "Claude for long-horizon tasks",
+        "room": "Track 1",
+        "track": "Claws & Personal Agents",
+        "speakers": [
+          "Lance Martin"
+        ],
+        "status": "confirmed",
+        "desc": "Claude is capable of long horizon tasks. In this talk, we'll share lessons learned about building agent harnesses for reliable and secure long-horizon work. This include decoupling the brain and hands, self-verification, self-learning, and design for evolving agent harnesses.",
+        "alt": "Self-Improving software factories — Zach Lloyd"
+      },
+      {
+        "t": "2:25–2:45",
+        "k": "pick",
+        "anchor": false,
+        "title": "Tool Execution layer for agents",
+        "room": "Track 1",
+        "track": "Claws & Personal Agents",
+        "speakers": [
+          "Karan Vaidya"
+        ],
+        "status": "confirmed",
+        "desc": "MCP, skills, Cli - so much noise - what’s the best way for agents to communicate",
+        "alt": "River: Shopify's Slack-Native AI Agent"
+      },
+      {
+        "t": "2:50–3:10",
+        "k": "pick",
+        "anchor": false,
+        "title": "Notion's Token Town",
+        "room": "Main Stage",
+        "track": "Software Factories",
+        "speakers": [
+          "Sarah Sachs"
+        ],
+        "status": "confirmed",
+        "desc": null,
+        "alt": "Where RL Will Take Search"
+      },
+      {
+        "t": "3:20–3:40",
+        "k": "pick",
+        "anchor": false,
+        "title": "Stop Chunking Like It's 2022",
+        "room": "Track 3",
+        "track": "Search & Retrieval",
+        "speakers": [
+          "Yuval Belfer",
+          "Niv Granot"
+        ],
+        "status": "confirmed",
+        "desc": "Every RAG system bets everything on a single chunk size. 500 tokens? 800? Pick wrong, and half your queries fail before they start. But here's what nobody tells you: all the picks are wrong; there is no single chunk size that works for all queries. We ran oracle experiments across meeting transcripts, story chapters, and TV scripts. The result? Queries disagree violently on what chunk size works best - sometimes by 40 percentage points. Your \"tuned\" chunk size isn't a compromise; it's systematic underperformance. In this talk, we'll expose why fixed chunking fails and show you a dead-simple fix: index at multiple chunk sizes, aggregate at retrieval time using Reciprocal Rank Fusion. No retraining. No LLM overhead. Just 1-37% better recall across benchmarks by letting queries vote with their ranks instead of forcing them into one-size-fits-all boxes. Walk away knowing exactly when your chunk size is sabotaging you - and how to stop leaving 20-40% of your retrieval performance on the table.",
+        "alt": "fighting slop with slop — Vaibhav Gupta (BAML)"
+      },
+      {
+        "t": "3:45–4:05",
+        "k": "pick",
+        "anchor": false,
+        "title": "The Software Factory Survivor's Guide",
+        "room": "Main Stage",
+        "track": "Software Factories",
+        "speakers": [
+          "Kyle Mistele"
+        ],
+        "status": "confirmed",
+        "desc": "Code is free, software is infinite, and agents can do it all - that's the promise of the lights-off software factory, where humans interact only with tickets & specifications, and nobody reads the code, let alone writes it. We ran our own for six months, and we have the scars to prove it - bad code compounded, and agents created problems that agents couldn't solve - until we had to throw it all away. But this is a survivor's guide, not an obituary. In this talk, we'll share the challenges we encountered, what we liked, what we hated, what we're still doing, what we stopped doing, and what we started doing afterwards.",
+        "alt": "Every Harness Will Become A Claw — Sam Bhagwat"
+      },
+      {
+        "t": "4:30–5:30",
+        "k": "keynote",
+        "anchor": false,
+        "title": "Closing keynotes — Dex Horthy · Erik Meijer · Lee Robinson (Cursor)",
+        "room": "Main Stage",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Dex Horthy: Harness Engineering is not Enough — Why Software Factories Fail · Erik Meijer: In Code They Act, In Proof We Trust · Lee Robinson: The Future of Cursor.",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": "d3",
+    "label": "Day 3 · Wed",
+    "sub": "Jul 1 · Context + Memory ⭐",
+    "date": "2026-07-01",
+    "slots": [
+      {
+        "t": "9:00–10:30",
+        "k": "keynote",
+        "anchor": false,
+        "title": "Keynotes — AI Eng Survey · Verifiers are King · Perception Agents · Evals Intro",
+        "room": "Main Stage",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "2026 AI Engineering Survey (Barr Yaron) · Seeing like an Agent (Thariq) · In the Land of AI Agents the Verifiers Are King (Tariq Shaukat) · Perception Agents (Antje Barth) · Evals Track Intro (Laurie Voss).",
+        "alt": ""
+      },
+      {
+        "t": "10:45–11:05",
+        "k": "pick",
+        "anchor": false,
+        "title": "Build-Time vs. Run-Time: Why Your Dev Tools Will Fail in Production",
+        "room": "Track 8",
+        "track": "Context Engineering",
+        "speakers": [
+          "Kurtis Van Gent",
+          "Prerna Kakkar"
+        ],
+        "status": "confirmed",
+        "desc": "A dangerous pattern is evolving in the ecosystem: developers are deploying \"Build-Time\" tools into \"Run-Time\" environments. In this session, we will introduce a critical distinction for the MCP ecosystem: the difference between Build-Time Agents (Developer Assistants like Gemini Code Assist) and Run-Time Agents (End-user applications like a Customer Support bot). Drawing from our experience building the MCP Toolbox, we will demonstrate why the \"Atomic\" tools that make Build-Time agents powerful become catastrophic liabilities for Run-Time agents. We will provide a framework for transitioning your architecture across three key axes: Design: Moving from flexible, atomic primitives to \"Composite Workflows\" that encapsulate business logic. Security: Shifting from \"Developer Identity\" (trusted) to \"Workload Identity\" (zero-trust), where the agent is treated as an untrusted user. Reliability: Why production agents need \"Agent-Readable\" errors (natural language guidance) rather than the stack traces that developers rely on. Attendees will leave with a clear rubric for evaluating whether their tools are truly \"Production Ready\" or just \"Prototype Ready.\"",
+        "alt": "Understanding is the New Bottleneck — Geoffrey Litt"
+      },
+      {
+        "t": "11:10–11:30",
+        "k": "pick",
+        "anchor": false,
+        "title": "Building a Unified Interface For LLMs",
+        "room": "Track 1",
+        "track": "Sandbox & Platform Engineering",
+        "speakers": [
+          "Shashank Goyal"
+        ],
+        "status": "confirmed",
+        "desc": null,
+        "alt": "It's Tokens All The Way Down: How RLMs Differ"
+      },
+      {
+        "t": "11:40–12:00",
+        "k": "pick",
+        "anchor": false,
+        "title": "500 Skills, Zero Fine-Tuning: LinkedIn's Playbook for AI Agents That Actually Know Your Codebase",
+        "room": "Track 8",
+        "track": "Context Engineering",
+        "speakers": [
+          "Ajay Prakash"
+        ],
+        "status": "confirmed",
+        "desc": "Everyone's building custom AI agents. We didn't. Instead, we built CAPTAIN — an MCP server that makes any off-the-shelf coding agent understand LinkedIn's entire engineering stack. The secret: a meta-tool architecture (discover → inspect → execute) and composable skills that encode tribal knowledge as executable workflows. 500+ skills later, it's used across all of LinkedIn engineering. I'll show you the architecture in 10 minutes and why context engineering beats model engineering every time.",
+        "alt": "Scaling Compute on Context — Jack Morris"
+      },
+      {
+        "t": "12:05–12:25",
+        "k": "pick",
+        "anchor": false,
+        "title": "Prompt, Memory, Weights: The Architecture Decisions Most AI Teams Make by Accident",
+        "room": "Expo Stage 4 SE",
+        "track": "Context Engineering",
+        "speakers": [
+          "Anant Srivastava"
+        ],
+        "status": "confirmed",
+        "desc": "The interesting engineering in production AI isn't in the model. Your knowledge lives in files, databases, and APIs: docs, runbooks, conversations, code. The model just reads tokens. So the real architectural question is which path that knowledge takes to inference: into the prompt directly, into memory for retrieval on demand, or into the weights through fine-tuning. Most teams treat these as a ladder. Start with prompts, escalate to RAG, eventually fine-tune, as if each step is a more advanced version of the last. The field is converging on a different answer: they solve different problems. The prompt shapes behavior and constraints. Memory grounds the model in current, citable knowledge. Weights harden specialized reasoning and format. They're not substitutes you graduate between; they're complementary, and the failures come from using one to do another's job. Fine-tuning to teach the model facts it should have retrieved is the classic trap: you bake in knowledge that's stale the day it ships, and you still can't cite it. This is an opinionated take on all three: when each is the right call, when each is a trap, and the part most teams never build, the circulation between them. Memory that captures what the agent does becomes the dataset you fine-tune on; fine-tuning changes what's worth retrieving; the loop compounds. Get the three paths right and they stop being a pipeline you climb and start being an architecture that learns.",
+        "alt": "Your agents lack context: fixing 'You're absolutely right!'"
+      },
+      {
+        "t": "12:25–1:30",
+        "k": "net",
+        "anchor": false,
+        "title": "Lunch + Expo",
+        "room": "",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Protected networking time.",
+        "alt": ""
+      },
+      {
+        "t": "1:30–1:50",
+        "k": "pick",
+        "anchor": false,
+        "title": "How long can your skills be before your agent forgets what you told it?",
+        "room": "Track 8",
+        "track": "Context Engineering",
+        "speakers": [
+          "Laurie Voss"
+        ],
+        "status": "confirmed",
+        "desc": "A year ago, frontier models lost the thread somewhere around 200 simultaneous instructions, so skills files had to stay short and lean on sub-skills and subagents. We re-ran IFScale on the 2026 frontier and found the ceiling has moved by an order of magnitude: closer to 2,000 instructions, up to 5,000 on the strongest models. The more interesting story is how models fail at the new frontier: DeepSeek quietly drops instructions, Opus refuses outright when innocuous words trip a safety classifier, Gemini burns its whole budget on reasoning and emits nothing, and GPT-5.5 stops to tell you your request was unreasonable. The capacity problem is largely solved; verification is wide open. We'll show the data, the failure modes, and what it costs to find out. You’ll come out with hard data on the ceiling for complex instructions to LLMs",
+        "alt": "Adaption Labs: Gradient-Free Continual Learning — Sara Hooker"
+      },
+      {
+        "t": "1:55–2:15",
+        "k": "pick",
+        "anchor": false,
+        "title": "Cut Through the Context Hype: 4 Layers Your Agent Is Missing",
+        "room": "Track 8",
+        "track": "Context Engineering",
+        "speakers": [
+          "Prukalpa Sankar"
+        ],
+        "status": "confirmed",
+        "desc": "AI without context is confidence without comprehension. Your agent can parse queries, generate SQL, and produce articulate explanations — and still be completely wrong. Not because the model is weak. Because it has no world model of your business. This talk cuts through the context engineering hype and gets concrete. Drawing on 500+ enterprise deployments — Mastercard, Nasdaq, GM, Rocket Mortgage, CME Group — Prukalpa Sankar breaks down the four layers every agent is missing: the data it can access, the meaning behind it, the business rules nobody ever wrote down, and the user context that determines what a correct answer actually looks like. Even OpenAI needed six layers of structured context to make their own internal data agent work — cutting query time from 22 minutes to 90 seconds. The pattern is consistent across every production deployment we've seen. The takeaway: a practical four-layer audit framework you can apply to your own stack on Monday.",
+        "alt": "Improving Agents is a Data Mining Problem"
+      },
+      {
+        "t": "2:25–2:45",
+        "k": "pick",
+        "anchor": false,
+        "title": "1,000 Agent Tasks in a Sandbox: What Breaks When LLMs Write and Run Code",
+        "room": "Track 1",
+        "track": "Sandbox & Platform Engineering",
+        "speakers": [
+          "Kevin Orellana"
+        ],
+        "status": "confirmed",
+        "desc": "We ran 1,000 automated tasks through a production code interpreter sandbox — file I/O, package installs, data analysis, ML training, binary downloads, multi-language execution — and tracked every failure. 88% passed. The other 12% revealed 18 distinct failure modes that no unit test would catch: binary encoding corruption in the transport layer, null bytes silently truncating file downloads, pip blocked by network isolation with no useful error, and path traversal inputs accepted without validation. This talk walks through the experiment design, the findings ranked by severity, and what we changed. If you are building or operating sandboxed execution for AI agents, these are the bugs waiting for your customers to find first.",
+        "alt": "MCP Apps - Extending the frontier — Liad Yosef, Ido Salomon"
+      },
+      {
+        "t": "2:50–3:10",
+        "k": "pick",
+        "anchor": false,
+        "title": "MCP Apps: Give the Model Data, Give the User a UI",
+        "room": "Track 8",
+        "track": "Context Engineering",
+        "speakers": [
+          "Dustin Mihalik"
+        ],
+        "status": "confirmed",
+        "desc": "Most MCP tools return text. MCP Apps let you go further. But the real unlock isn't just rendering a pretty UI, it’s understanding that the model and the user need fundamentally different things from the same interaction. This talk presents a design pattern for building great MCP Apps: separate the data layer (what the model reasons about) from the display layer (what the user interacts with). When you do this well, the model retains full context and agency over structured data, while the user gets a rich, interactive interface. We'll walk through concrete examples of how splitting data and display unlocks capabilities that pure UI apps can't provide: letting the model make choices around display, answer questions based on interactions, and providing detailed displays and filters. Attendees will leave with a practical mental model for designing MCP Apps that are good for both the human and the AI. Attendees will learn patterns they can apply immediately.",
+        "alt": "Designing Agents (The Floor Is the Frontier) — Ben Hylak"
+      },
+      {
+        "t": "3:20–3:40",
+        "k": "pick",
+        "anchor": false,
+        "title": "Lessons from Studying Every Memory System",
+        "room": "Track 3",
+        "track": "Memory & Continual Learning",
+        "speakers": [
+          "Shlok Khemani"
+        ],
+        "status": "confirmed",
+        "desc": "I've studied every major memory implementation in the industry and then built multiple memory systems for various teams. Sharing hot takes and lessons from across architectures, design, scaling, evals, and memory philosophy.",
+        "alt": "Sandboxes Aren't Optional: Runtime Isolation Patterns"
+      },
+      {
+        "t": "3:45–4:05",
+        "k": "pick",
+        "anchor": false,
+        "title": "LLM Knowledge Bases: a practical guide",
+        "room": "Track 3",
+        "track": "Memory & Continual Learning",
+        "speakers": [
+          "Ben Holmes"
+        ],
+        "status": "confirmed",
+        "desc": "Putting thoughts to paper (or keyboard, or transcription model) refines your thinking, connects ideas, and pulls context out of your brain for others to learn from. But while taking notes can be fun, organizing those notes is not. Flat lists turn to folders turn to tags and taxonomies that grow unwieldy beyond the first hundred entries. If you can’t find what you wrote down yesterday, or you miss connections to related ideas, you’re missing the value of notetaking: learning from what you notate. Agents dramatically expanded what’s possible here. Combined with Markdown-backed apps like Obsidian to make notes agent-accessible, you can build a second brain that works for you, not the other way around. Andre Karpathy has popularized LLM knowledge bases, and I want to take it further with concrete workflows you can use to organize your thoughts with agents. We’ll explore a number of Obsidian workflows to make this possible: - Automations to organize notes with tags, folders, backlinks, and deduplication to level-up search and discovery - More automations to have agents expand your thinking by auto-recording ideas while you sleep - Building an agentic writing partner to surface related ideas in real time and answer questions as you type (or as you speak) - Voice monologuing and summarization tools to lower the friction of transcibing thoughts into well-formatted notes You’ll walk away with a new appreciation for notetaking, and a second brain that leaves you 10x smarter than your brain alone. Talk format: Code and live tech demos. I will set up all of these automations and tools from scratch, and show agents executing each of them live. I will share the source for all automations as well.",
+        "alt": "The Universal Remote Control for AI — Alex Hancock"
+      },
+      {
+        "t": "4:30–5:30",
+        "k": "keynote",
+        "anchor": false,
+        "title": "Closing keynotes — Addy Osmani · Trends in AI · LMArena",
+        "room": "Main Stage",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Closing Keynote (Addy Osmani) · Trends in AI (Artificial Analysis) · Closing TBD (LMArena, Anastasios Angelopoulos).",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": "d4",
+    "label": "Day 4 · Thu",
+    "sub": "Jul 2 · Agentic + Harness ⭐",
+    "date": "2026-07-02",
+    "slots": [
+      {
+        "t": "9:00–10:30",
+        "k": "keynote",
+        "anchor": false,
+        "title": "Keynotes — ⭐Matt Pocock · Ousterhout · Mike Krieger · Emil Eifrem",
+        "room": "Main Stage",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Matt Pocock: Building Great Agent Skills — The Missing Manual · John Ousterhout: TCP/RDMA & Homa for inference · Separating the Task from the Model (Rivest/Miller) · Mike Krieger (Anthropic): How Tag changed Labs · Emil Eifrem: Why Graphs?",
+        "alt": ""
+      },
+      {
+        "t": "10:45–11:05",
+        "k": "pick",
+        "anchor": false,
+        "title": "Tokens Should Have Jobs",
+        "room": "Main Stage",
+        "track": "Harness Engineering",
+        "speakers": [
+          "Katelyn Lesse",
+          "Angela Jiang"
+        ],
+        "status": "confirmed",
+        "desc": null,
+        "alt": "Local AI State of the Union Pt 1 (OSS anchor, runs to 11:30)"
+      },
+      {
+        "t": "11:10–11:30",
+        "k": "pick",
+        "anchor": false,
+        "title": "MCPs, CLIs, and Skills: Choosing the Right Tooling Layer for Agentic Development",
+        "room": "Main Stage",
+        "track": "Agentic Engineering",
+        "speakers": [
+          "Nikita Kothari"
+        ],
+        "status": "confirmed",
+        "desc": "Agentic development needs more than one interface: MCPs provide clean, portable connectors to services, with built-in patterns for security and auth. CLIs offer composability, debuggability, and workflows developers already trust. Skills teach agents how to use a wide variety of tools and MCPs effectively without overloading context.",
+        "alt": "Anthropic's CCA Exam as a Field-Guide — Frank Coyle"
+      },
+      {
+        "t": "11:40–12:00",
+        "k": "pick",
+        "anchor": false,
+        "title": "Auth for Agents: Unblock Autonomous AI with auth.md",
+        "room": "Main Stage",
+        "track": "Agentic Engineering",
+        "speakers": [
+          "Michael Grinich"
+        ],
+        "status": "confirmed",
+        "desc": "AI agents are ready to act on users' behalf, but legacy auth flows were built for humans, not agents. This session introduces auth.md, an open protocol that lets agents register and authenticate users without sign-up forms, and shares what early implementers have learned since launch. Learn about the new protocol that Cloudflare, Firecrawl, Cogny, and monday.com are adopting to power agent registration — authenticating agents without sign-up forms.",
+        "alt": "Guide, Verify, Solve"
+      },
+      {
+        "t": "12:05–12:25",
+        "k": "pick",
+        "anchor": false,
+        "title": "Harness Engineering: Building the Production Cage for Powerful Domain Agents",
+        "room": "Main Stage",
+        "track": "Harness Engineering",
+        "speakers": [
+          "Mike Chambers"
+        ],
+        "status": "confirmed",
+        "desc": "Every agent is a while loop. The model takes strings in and produces strings out. We've all written it, debugged it, shipped it. And yet every team building agents is still re-inventing the same session management, truncation logic, tool wiring, and memory plumbing from scratch. The hard part is the harness: session isolation, context management, memory persistence, sandboxed execution, observability. The machinery that makes a model dependable in production. Most of the failures we see in deployed agents (context rot, premature completion, tool bloat) trace back to harness problems, not model problems. This talk covers what a harness actually does, why \"harness engineering\" suddenly showed up in engineering posts from everyone, and what changes when you stop building harnesses by hand. In live demos, we'll build the same agent three ways: hand-rolled Python, framework-generated, and fully managed through a single API call. Each level shifts the failure modes from infrastructure plumbing to engineering judgment, where the real questions are what context to preserve, when to verify, and how to keep an agent from finishing half the job and calling it done. The harness handles the machinery. You still have to engineer the behavior.",
+        "alt": "Benchmarking Coding Agents on New vs Legacy Codebases"
+      },
+      {
+        "t": "12:25–1:30",
+        "k": "net",
+        "anchor": false,
+        "title": "Lunch + Expo",
+        "room": "",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Protected networking — last day, good for follow-ups with people you met.",
+        "alt": ""
+      },
+      {
+        "t": "1:30–1:50",
+        "k": "pick",
+        "anchor": false,
+        "title": "Building on the Codex Harness",
+        "room": "Track 8",
+        "track": "Agentic Engineering",
+        "speakers": [
+          "Dominik Kundel"
+        ],
+        "status": "tentative",
+        "desc": null,
+        "alt": "What's New in Inference Engineering — Philip Kiely"
+      },
+      {
+        "t": "1:55–2:15",
+        "k": "pick",
+        "anchor": false,
+        "title": "🎵 Every step you take, every call you make - the reliable agent stack",
+        "room": "Main Stage",
+        "track": "Harness Engineering",
+        "speakers": [
+          "Giselle van Dongen"
+        ],
+        "status": "confirmed",
+        "desc": "In this session, we skip past the demos that work only on your laptop, and go straight to how you can build production-ready agents with a stack that covers all the hard bits of backend development that you don’t want to be bothered with when developing your agents: - Failure resiliency: retries, timeouts, and exactly-once execution so a flaky API or a crashed process doesn't corrupt your agent's state or makes them start from scratch - Durable Sessions: a session store with built-in conversation isolation and protection against corruption from concurrent agents - Pause/resume for human approvals: survive human approvals and research that take weeks without building complex infra - Agent-to-agent messaging layer: call agents developed by other teams or running on other infra with resilient HTTP calls - A kill switch: cancel a running agent cleanly at any point, without leaving half-executed work behind We will demonstrate each concept with live code examples, using Python, OpenAI Agents SDK and Restate as open-source Durable Execution engine. All examples are generally applicable: pick your favorite agent SDK (OpenAI Agents, Pydantic AI, Vercel AI, Google ADK,…) or go wild and implement low-level custom agents by just tying together LLM calls with custom logic.",
+        "alt": "Multiplayer agentic engineering — Arjun Singh"
+      },
+      {
+        "t": "2:25–2:45",
+        "k": "pick",
+        "anchor": false,
+        "title": "We let an AI agent execute Bash and lived to talk about it",
+        "room": "Main Stage",
+        "track": "Harness Engineering",
+        "speakers": [
+          "Sarah Sanders"
+        ],
+        "status": "confirmed",
+        "desc": "PostHog's Wizard agent can read your codebase, install packages, and run shell commands on your laptop. Yes, on purpose. This talk covers how we went from \"defense-in-hope\" to a standalone, robust security service. It'll highlight results from a pentest that made us question our life choices, an internal audit that challenged our architecture, and the debate over how to secure the entire pipeline. You'll learn why \"scan-then-trust\" is a weaker model than you think, what it takes to build kill switches you hope you never use, and what happens when you pentest an AI agent that has access to Bash.",
+        "alt": "Always-on agents run production without the on-call tax"
+      },
+      {
+        "t": "2:50–3:10",
+        "k": "pick",
+        "anchor": false,
+        "title": "No Memory, No Harness: Why the Database Is the Last Line of Defense",
+        "room": "Main Stage",
+        "track": "Harness Engineering",
+        "speakers": [
+          "Kay Malcolm"
+        ],
+        "status": "confirmed",
+        "desc": "The model is the easy part. Everything that makes an agent survive contact with production lives in the harness around it: orchestration, tooling, governance, and the memory core that keeps the system grounded when the model itself is probabilistic, forgetful, and non-deterministic. This talk walks the surface areas of an agent harness and consolidates the lessons we're learning as we ship them, from agentic applications in their current form (autonomous systems that now build their own automations) to the continual-learning loops that let agents improve from their own experience. We'll look at how the discipline is segmenting. AI application development is no longer one role but several: agent engineers, memory engineers, and platform engineers. We'll map Oracle's primitives onto each as the current state of harness engineering takes shape. We'll also examine the two populations betting on this stack at once, enterprise customers who need governance, reliability, and scale, alongside the cracked developers who need fast, composable primitives, and why a well-engineered harness serves both. And we'll make the case that has held through every shift in the stack: memory isn't a feature you bolt on, it's the foundation the rest of the harness stands on. The database remains the memory core, and when everything above it is probabilistic, it's the last line of defense.",
+        "alt": "Realtime multiplayer, automation, and you! — Idan Gazit"
+      },
+      {
+        "t": "3:20–3:40",
+        "k": "pick",
+        "anchor": false,
+        "title": "We Solved Agent Building - The Evolution of Building A Successful Data Science Agent",
+        "room": "Main Stage",
+        "track": "Harness Engineering",
+        "speakers": [
+          "Andrew Qu"
+        ],
+        "status": "confirmed",
+        "desc": "At Vercel I've built a successful AI data scientist, that has taken the load off of our data team from answering ad-hoc data queries, and fields over 1,200 unique queries a day from just internal Vercelians. I've been building and iterating on it since last september, and it's gone through over 6 different rewrites, the newest one of which has inspired us to build a new agent framework (to be teased during the talk ;) ). I'd talk about why we build agents, how we build agents, and how to build effective agents in today's world. Just prompting, to adding bespoke tooling, to embedding claude code, to file system agents, to skills-based agents, to the new agent harness framework.",
+        "alt": "Two Bugs in vLLM: A Debugging Detective Story"
+      },
+      {
+        "t": "3:45–4:05",
+        "k": "pick",
+        "anchor": false,
+        "title": "Agents Without Code: How Skills, YAML, and Filesystems Replaced Python",
+        "room": "Main Stage",
+        "track": "Harness Engineering",
+        "speakers": [
+          "Philipp Schmid"
+        ],
+        "status": "confirmed",
+        "desc": "Six months ago, building an agent meant writing a Python class with a `while` loop, tool definitions in dicts, manual state management or writing custom python functions. Today, you define an agent in a YAML file, drop a `SKILL.md` into a folder, and deploy. This talk traces the arc from \"Agent in Python\" to \"Agent as filesystem\". You'll learn the same agent built three ways: the hard way (Jan 2025), the simple way (Oct 2025), and the zero-code way (today).",
+        "alt": "Open Source Is Dead. Long Live Open Source — Saoud Rizwan (Cline)"
+      },
+      {
+        "t": "4:30–5:30",
+        "k": "keynote",
+        "anchor": false,
+        "title": "Closing keynotes — Theo Browne · Garry Tan · Startup Battlefield",
+        "room": "Main Stage",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Theo Browne · Garry Tan (Y Combinator) · Startup Battlefield (Howie Liu).",
+        "alt": ""
+      }
+    ]
+  }
+]
+
+</script>
+
 <script>
-const DATA = [
-  { id:"d1", label:"Day 1 · Mon", sub:"Jun 29 · Workshops", date:"2026-06-29",
-    slots:[
-      {t:"9:00–11:00", k:"pick", title:"Total Recall: Agent Memory & Harness Engineering", room:"Track 6", tags:["Workshop","Harness"], alt:"Cooking with Codex (Track 3)"},
-      {t:"11:05–12:05", k:"pick", title:"How to Build Quality Gates into Agentic Coding Workflows", room:"Track 7", tags:["Workshop","Evals"], alt:"How I learned to stop worrying and love the sandbox (Track 3)"},
-      {t:"12:10–1:10", k:"pick", title:"Lifestyles of the AI-Native: agent skills, hooks, scheduled tasks", room:"Track 2", tags:["Workshop","Claude"], alt:"Beyond RAG: Build a Relational Context Engine from Scratch (Track 7)"},
-      {t:"1:15–2:15", k:"net", title:"Lunch + Expo", room:"", tags:["Networking"], alt:"Optional hands-on: Turning My Obsidian Vault Into a Local AI Engineer (Track 8)"},
-      {t:"2:20–4:20", k:"pick", title:"⭐ ANCHOR — Context Engineering in 2026: Compaction, Memory & Cost", room:"Track 6", tags:["★ Deep dive","Harness"], alt:"From Vibes to Production: Evaluating & Shipping AI Agents 201 (Track 1)"},
-      {t:"4:30–5:30", k:"pick", title:"The Dark Arts of Skill Engineering", room:"Track 2", tags:["Workshop","Skills"], alt:"Hill-climbing Skills: Improve Agents Without Touching the Model (Track 4)"},
-      {t:"6:00–7:15", k:"net", title:"Expo Welcome + Runway AI Film Festival", room:"Expo", tags:["Networking"], alt:""}
-    ]},
-  { id:"d2", label:"Day 2 · Tue", sub:"Jun 30 · Coding & Retrieval", date:"2026-06-30",
-    slots:[
-      {t:"9:00–10:30", k:"keynote", title:"Keynotes — swyx · Thom Wolf · OpenAI (Embiricos/Huet) · GLM-5.2", room:"Main Stage", tags:["★ Keynote"], alt:""},
-      {t:"10:45–11:05", k:"pick", title:"Getting the most out of Codex — Jason Liu", room:"Software Factories", tags:["Coding","OpenAI"], alt:"Security Firewall for Agents — Ryan Dahl"},
-      {t:"11:10–11:30", k:"pick", title:"Your Agent Didn't Fail. Your Harness Did.", room:"Claws", tags:["Harness"], alt:"The unreasonable effectiveness of BM25 for agentic search"},
-      {t:"11:40–12:00", k:"pick", title:"Gadgets: Personal app vibe coding that is actually safe — Kenton Varda", room:"Software Factories", tags:["Coding"], alt:"The Search Engine for the Agentic Web — Will Bryk"},
-      {t:"12:05–12:25", k:"pick", title:"What we learned by analyzing 1M AI-generated PRs — Daksh Gupta", room:"Software Factories", tags:["Coding","Data"], alt:"Rebuilding the web for agents — Liad Yosef"},
-      {t:"12:25–1:30", k:"net", title:"Lunch + Expo floor", room:"", tags:["Networking"], alt:""},
-      {t:"1:30–1:50", k:"pick", title:"Design Knowledge Agents for Knowledge Work — Benjamin Clavié", room:"Search & Retrieval", tags:["Retrieval"], alt:"Agents' next frontier: agent-to-agent & network effects"},
-      {t:"1:55–2:15", k:"pick", title:"Claude for long-horizon tasks — Lance Martin", room:"Claws", tags:["Claude","Agents"], alt:"Self-Improving software factories — Zach Lloyd"},
-      {t:"2:25–2:45", k:"pick", title:"Tool Execution layer for agents — Karan Vaidya", room:"Claws", tags:["Harness","Tools"], alt:"River: Shopify's Slack-Native AI Agent"},
-      {t:"2:50–3:10", k:"pick", title:"Notion's Token Town — Sarah Sachs", room:"Software Factories", tags:["Case study"], alt:"Where RL Will Take Search"},
-      {t:"3:20–3:40", k:"pick", title:"Stop Chunking Like It's 2022", room:"Search & Retrieval", tags:["Retrieval"], alt:"fighting slop with slop — Vaibhav Gupta (BAML)"},
-      {t:"3:45–4:05", k:"pick", title:"The Software Factory Survivor's Guide — Kyle Mistele", room:"Software Factories", tags:["Coding"], alt:"Every Harness Will Become A Claw — Sam Bhagwat"},
-      {t:"4:30–5:30", k:"keynote", title:"Closing keynotes — ⭐Dex Horthy \"Why Software Factories Fail\" · Erik Meijer · Lee Robinson \"Future of Cursor\"", room:"Main Stage", tags:["★ Keynote"], alt:""},
-      {t:"AM/PM", k:"net", title:"Hands-on anchor options (Track 4): Claude Managed Agents Workshop (10:45–12:25) · Jason Liu \"Setting Yourself Up for Success\" (2:50–4:05)", room:"Track 4", tags:["Workshop alt"], alt:""}
-    ]},
-  { id:"d3", label:"Day 3 · Wed", sub:"Jul 1 · Context + Memory ⭐", date:"2026-07-01",
-    slots:[
-      {t:"9:00–10:30", k:"keynote", title:"Keynotes — 2026 AI Eng Survey · \"Verifiers are King\" · Perception Agents · Evals Intro (Laurie Voss)", room:"Main Stage", tags:["★ Keynote"], alt:""},
-      {t:"10:45–11:05", k:"pick", title:"Build-Time vs. Run-Time: Why Your Dev Tools Will Fail in Production", room:"Context Engineering", tags:["Context"], alt:"Understanding is the New Bottleneck — Geoffrey Litt"},
-      {t:"11:10–11:30", k:"pick", title:"Building a Unified Interface for LLMs — Shashank Goyal", room:"Sandbox & Platform", tags:["Platform","Multi-provider"], alt:"It's Tokens All The Way Down: How RLMs Differ"},
-      {t:"11:40–12:00", k:"pick", title:"500 Skills, Zero Fine-Tuning: LinkedIn's Playbook — Ajay Prakash", room:"Context Engineering", tags:["Skills","Case study"], alt:"Scaling Compute on Context — Jack Morris"},
-      {t:"12:05–12:25", k:"pick", title:"Prompt, Memory, Weights: Architecture Decisions Teams Make by Accident", room:"Context Engineering", tags:["Context","Architecture"], alt:"Your agents lack context: fixing \"You're absolutely right!\""},
-      {t:"12:25–1:30", k:"net", title:"Lunch + Expo", room:"", tags:["Networking"], alt:""},
-      {t:"1:30–1:50", k:"pick", title:"How long can your skills be before your agent forgets? — Laurie Voss", room:"Context Engineering", tags:["Skills","Evals"], alt:"Adaption Labs: Gradient-Free Continual Learning — Sara Hooker"},
-      {t:"1:55–2:15", k:"pick", title:"Cut Through the Context Hype: 4 Layers Your Agent Is Missing — Prukalpa Sankar", room:"Context Engineering", tags:["Context"], alt:"Improving Agents is a Data Mining Problem"},
-      {t:"2:25–2:45", k:"pick", title:"MCP Apps — Extending the frontier — Liad Yosef, Ido Salomon", room:"Context Engineering", tags:["MCP"], alt:"Self-Improvement of Context, Harness & Weights — L. Agrawal"},
-      {t:"2:50–3:10", k:"pick", title:"1,000 Agent Tasks in a Sandbox: What Breaks When LLMs Write & Run Code — Kevin Orellana", room:"Sandbox & Platform", tags:["Reliability"], alt:"Designing Agents (The Floor Is the Frontier) — Ben Hylak"},
-      {t:"3:20–3:40", k:"pick", title:"Lessons from Studying Every Memory System — Shlok Khemani", room:"Memory", tags:["Memory"], alt:"Sandboxes Aren't Optional: Runtime Isolation Patterns"},
-      {t:"3:45–4:05", k:"pick", title:"LLM Knowledge Bases: a practical guide — Ben Holmes", room:"Memory", tags:["Memory","Practical"], alt:"The Universal Remote Control for AI — Alex Hancock"},
-      {t:"4:30–5:30", k:"keynote", title:"Closing keynotes — Addy Osmani · \"Trends in AI\" (Artificial Analysis) · LMArena", room:"Main Stage", tags:["★ Keynote"], alt:""},
-      {t:"PM", k:"net", title:"Hands-on anchor option (Track 4): John Lindquist \"Agentic Power User's Playbook: Swarm-Style Development\" (1:30–2:45)", room:"Track 4", tags:["Workshop alt"], alt:""}
-    ]},
-  { id:"d4", label:"Day 4 · Thu", sub:"Jul 2 · Agentic + Harness ⭐", date:"2026-07-02",
-    slots:[
-      {t:"9:00–10:30", k:"keynote", title:"Keynotes — ⭐Matt Pocock \"Building Great Agent Skills\" · John Ousterhout · Mike Krieger (Anthropic) · Emil Eifrem", room:"Main Stage", tags:["★ Keynote"], alt:""},
-      {t:"10:45–11:05", k:"pick", title:"Tokens Should Have Jobs", room:"Harness Engineering", tags:["Harness"], alt:"Local AI State of the Union Pt 1 (OSS anchor, runs to 11:30)"},
-      {t:"11:10–11:30", k:"pick", title:"MCPs, CLIs, and Skills: Choosing the Right Tooling Layer — Nikita Kothari", room:"Agentic Engineering", tags:["Agents","Tooling"], alt:"Anthropic's CCA Exam as a Field-Guide — Frank Coyle"},
-      {t:"11:40–12:00", k:"pick", title:"Auth for Agents: Unblock Autonomous AI with auth.md — Michael Grinich", room:"Agentic Engineering", tags:["Agents","Auth"], alt:"Guide, Verify, Solve"},
-      {t:"12:05–12:25", k:"pick", title:"Harness Engineering: Building the Production Cage for Domain Agents — Mike Chambers", room:"Harness Engineering", tags:["Harness"], alt:"Benchmarking Coding Agents on New vs Legacy Code"},
-      {t:"12:25–1:30", k:"net", title:"Lunch + Expo", room:"", tags:["Networking"], alt:""},
-      {t:"1:30–1:50", k:"pick", title:"Building on the Codex Harness — Dominik Kundel", room:"Agentic Engineering", tags:["OpenAI","Harness"], alt:"What's New in Inference Engineering — Philip Kiely"},
-      {t:"1:55–2:15", k:"pick", title:"The reliable agent stack — Giselle van Dongen", room:"Harness Engineering", tags:["Reliability","Evals"], alt:"Multiplayer agentic engineering — Arjun Singh"},
-      {t:"2:25–2:45", k:"pick", title:"We let an AI agent execute Bash and lived to talk about it — Sarah Sanders", room:"Harness Engineering", tags:["Harness","Safety"], alt:"Always-on agents run production without the on-call tax"},
-      {t:"2:50–3:10", k:"pick", title:"No Memory, No Harness: The Database Is the Last Line of Defense — Kay Malcolm", room:"Harness Engineering", tags:["Harness","Memory"], alt:"Realtime multiplayer, automation, and you! — Idan Gazit"},
-      {t:"3:20–3:40", k:"pick", title:"We Solved Agent Building: Evolution of a Data-Science Agent — Andrew Qu", room:"Harness Engineering", tags:["Harness","Case study"], alt:"Two Bugs in vLLM: A Debugging Detective Story"},
-      {t:"3:45–4:05", k:"pick", title:"Agents Without Code: Skills, YAML & Filesystems Replaced Python — Philipp Schmid", room:"Harness Engineering", tags:["Skills","Claude"], alt:"Open Source Is Dead. Long Live Open Source — Saoud Rizwan"},
-      {t:"4:30–5:30", k:"keynote", title:"Closing keynotes — Theo Browne · Garry Tan · Startup Battlefield (Howie Liu)", room:"Main Stage", tags:["★ Keynote"], alt:""}
-    ]}
-];
+const DATA = JSON.parse(document.getElementById('sched').textContent);
+const SCHED_URL = "https://ai.engineer/worldsfair/2026/schedule";
+const tabsEl = document.getElementById('tabs');
+const daysEl = document.getElementById('days');
+const STORE = 'aiewf2026-checks-v2';
+let checks = JSON.parse(localStorage.getItem(STORE) || '{}');
 
-const tabsEl=document.getElementById('tabs'), daysEl=document.getElementById('days');
-const STORE='aiewf2026-checks';
-let checks=JSON.parse(localStorage.getItem(STORE)||'{}');
+function el(tag, cls){ const e = document.createElement(tag); if(cls) e.className = cls; return e; }
 
-DATA.forEach((d,i)=>{
-  const tab=document.createElement('div');
-  tab.className='tab'+(i===0?' active':''); tab.dataset.day=d.id;
-  tab.innerHTML=`${d.label}<small>${d.sub}</small>`;
-  tab.onclick=()=>selectDay(d.id);
+DATA.forEach((d, di) => {
+  const tab = el('div', 'tab' + (di === 0 ? ' active' : ''));
+  tab.dataset.day = d.id;
+  tab.innerHTML = `${d.label}<small>${d.sub}</small>`;
+  tab.onclick = () => selectDay(d.id);
   tabsEl.appendChild(tab);
 
-  const day=document.createElement('div');
-  day.className='day'+(i===0?' active':''); day.id=d.id;
-  d.slots.forEach((s,j)=>{
-    const key=d.id+'-'+j;
-    const checked=checks[key]?'checked':'';
-    const tagHtml=(s.tags||[]).map(t=>`<span class="tag${t.startsWith('★')?' star':''}">${t}</span>`).join('');
-    const altHtml=s.alt?`<button class="altbtn" data-key="${key}">↔ backup</button><div class="alt" id="alt-${key}">↔ <b>Backup:</b> ${s.alt}</div>`:'';
-    const slot=document.createElement('div');
-    slot.className='slot kind-'+s.k+(checked?' done':'');
-    slot.innerHTML=`
-      <div class="time">${s.t}</div>
-      <div class="body">
-        <div class="title">${s.title}</div>
-        <div class="tags">${s.room?`<span class="by">${s.room}</span>`:''}${tagHtml}</div>
-        ${altHtml}
-      </div>
-      ${s.k==='pick'?`<label class="chk"><input type="checkbox" data-key="${key}" ${checked}/></label>`:''}`;
+  const day = el('div', 'day' + (di === 0 ? ' active' : ''));
+  day.id = d.id;
+
+  d.slots.forEach((s, si) => {
+    const key = di + '-' + si;
+    const checked = !!checks[key];
+    const slot = el('div', 'slot kind-' + s.k + (s.anchor ? ' anchor' : '') + (checked ? ' done' : ''));
+
+    const time = el('div', 'time'); time.textContent = s.t; slot.appendChild(time);
+
+    const body = el('div', 'body');
+    const title = el('div', 'title'); title.textContent = s.title; body.appendChild(title);
+
+    const tags = el('div', 'tags');
+    if (s.room)  { const r = el('span', 'by');  r.textContent = '📍 ' + s.room; tags.appendChild(r); }
+    if (s.track) { const t = el('span', 'tag'); t.textContent = s.track; tags.appendChild(t); }
+    if (s.status === 'tentative') { const b = el('span', 'tag tent'); b.textContent = 'tentative'; tags.appendChild(b); }
+    if (s.anchor) { const a = el('span', 'tag'); a.textContent = '★ anchor deep-dive'; tags.appendChild(a); }
+    body.appendChild(tags);
+
+    const hasDetail = (s.speakers && s.speakers.length) || s.desc || s.alt;
+    if (hasDetail) {
+      const btn = el('button', 'detailbtn'); btn.textContent = 'ⓘ details'; body.appendChild(btn);
+      const det = el('div', 'detail');
+
+      if (s.speakers && s.speakers.length) {
+        const w = el('div', 'who'); w.textContent = '👤 ' + s.speakers.join(', '); det.appendChild(w);
+      }
+      const p = el('p', 'desc');
+      if (s.desc) { p.textContent = s.desc; }
+      else { p.className = 'desc empty'; p.textContent = 'No description published yet — check the official schedule.'; }
+      det.appendChild(p);
+
+      if (s.alt) {
+        const a = el('div', 'altrow');
+        const lbl = el('b'); lbl.textContent = 'Backup: ';
+        a.appendChild(document.createTextNode('↔ ')); a.appendChild(lbl);
+        a.appendChild(document.createTextNode(s.alt));
+        det.appendChild(a);
+      }
+      const link = el('a', 'sitelink');
+      link.href = SCHED_URL; link.target = '_blank'; link.rel = 'noopener';
+      link.textContent = 'Find on the official schedule ↗';
+      det.appendChild(link);
+
+      body.appendChild(det);
+      btn.onclick = () => {
+        det.classList.toggle('show');
+        btn.textContent = det.classList.contains('show') ? 'ⓘ hide details' : 'ⓘ details';
+      };
+    }
+    slot.appendChild(body);
+
+    if (s.k === 'pick') {
+      const lab = el('label', 'chk');
+      const cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.dataset.key = key; cb.checked = checked;
+      lab.appendChild(cb); slot.appendChild(lab);
+    }
     day.appendChild(slot);
   });
   daysEl.appendChild(day);
 });
 
 function selectDay(id){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.day===id));
-  document.querySelectorAll('.day').forEach(d=>d.classList.toggle('active',d.id===id));
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.day === id));
+  document.querySelectorAll('.day').forEach(d => d.classList.toggle('active', d.id === id));
   updateCount();
 }
 function updateCount(){
-  const active=document.querySelector('.day.active');
-  const picks=active.querySelectorAll('input[type=checkbox]').length;
-  const done=active.querySelectorAll('input[type=checkbox]:checked').length;
-  document.getElementById('count').textContent=`${done} / ${picks} sessions checked off today`;
+  const active = document.querySelector('.day.active');
+  const picks = active.querySelectorAll('input[type=checkbox]').length;
+  const done = active.querySelectorAll('input[type=checkbox]:checked').length;
+  document.getElementById('count').textContent = `${done} / ${picks} sessions checked off today`;
 }
-daysEl.addEventListener('change',e=>{
-  if(e.target.type==='checkbox'){
-    const k=e.target.dataset.key;
-    checks[k]=e.target.checked; localStorage.setItem(STORE,JSON.stringify(checks));
-    e.target.closest('.slot').classList.toggle('done',e.target.checked);
+daysEl.addEventListener('change', e => {
+  if (e.target.type === 'checkbox') {
+    checks[e.target.dataset.key] = e.target.checked;
+    localStorage.setItem(STORE, JSON.stringify(checks));
+    e.target.closest('.slot').classList.toggle('done', e.target.checked);
     updateCount();
   }
 });
-daysEl.addEventListener('click',e=>{
-  if(e.target.classList.contains('altbtn')){
-    document.getElementById('alt-'+e.target.dataset.key).classList.toggle('show');
-  }
-});
-let allShown=false;
-document.getElementById('expandAll').onclick=()=>{
-  allShown=!allShown;
-  document.querySelectorAll('.alt').forEach(a=>a.classList.toggle('show',allShown));
-  document.getElementById('expandAll').textContent=allShown?'↔ Hide backups':'↔ Show all backups';
+
+let allShown = false;
+document.getElementById('expandAll').onclick = () => {
+  allShown = !allShown;
+  document.querySelectorAll('.detail').forEach(x => x.classList.toggle('show', allShown));
+  document.querySelectorAll('.detailbtn').forEach(b => b.textContent = allShown ? 'ⓘ hide details' : 'ⓘ details');
+  document.getElementById('expandAll').textContent = allShown ? 'ⓘ Collapse all details' : 'ⓘ Expand all details';
 };
-document.getElementById('reset').onclick=()=>{
-  if(!confirm('Clear all your checkmarks?'))return;
-  checks={}; localStorage.removeItem(STORE);
-  document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
-  document.querySelectorAll('.slot').forEach(s=>s.classList.remove('done'));
+document.getElementById('reset').onclick = () => {
+  if (!confirm('Clear all your checkmarks?')) return;
+  checks = {}; localStorage.removeItem(STORE);
+  document.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+  document.querySelectorAll('.slot').forEach(s => s.classList.remove('done'));
   updateCount();
 };
 updateCount();
