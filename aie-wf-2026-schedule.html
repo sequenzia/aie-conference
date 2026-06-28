@@ -223,32 +223,23 @@
         "t": "12:10–1:10",
         "k": "pick",
         "anchor": false,
-        "title": "Lifestyles of the AI-Native: Voice-coding, agent skills, hooks and scheduled tasks",
-        "room": "Track 2",
+        "title": "From Zero to Leaderboard: Building an End-to-End AI Agent Evaluation Pipeline",
+        "room": "Track 5",
         "track": "Workshops Day 1",
         "speakers": [
           {
-            "name": "Nick Nisi",
-            "role": "Developer Experience Engineer",
-            "company": "WorkOS",
-            "linkedin": "https://www.linkedin.com/in/nicknisi",
-            "twitter": "https://x.com/nicknisi",
-            "website": "https://nicknisi.com",
-            "blog": null
-          },
-          {
-            "name": "Zack Proser",
-            "role": "AI Engineer, Applied AI",
-            "company": "WorkOS",
-            "linkedin": null,
-            "twitter": "https://x.com/zackproser",
-            "website": null,
-            "blog": null
+            "name": "Wolfram Ravenwolf",
+            "role": "AI Evangelist",
+            "company": "Weights & Biases by CoreWeave",
+            "linkedin": "https://de.linkedin.com/in/wolframravenwolf",
+            "twitter": "https://x.com/WolframRvnwlf",
+            "website": "https://wolfbench.ai/",
+            "blog": "https://wolfbench.ai/"
           }
         ],
         "status": "confirmed",
-        "desc": "Most engineers are bolting AI onto a workflow that was designed for a pre-AI world. The result is a faster version of the same grind. This talk is about the other path: rebuilding the daily practice of software engineering from the ground up, around what agents are actually good at.\n\nTwo senior practitioners from WorkOS will walk through how we actually work now as AI-native engineers — not in the aspirational sense, but the literal one. We think out loud and voice-code instead of typing our way to clarity. We package recurring expertise into agent skills so we're not re-explaining context every session. We wire up hooks that fire on the events we care about, and hand off scheduled tasks to agents that run overnight, while we're away from the keyboard, or otherwise off the clock. The throughline is intentional design: deciding what a human should hold onto and what should be delegated, then building the machinery to make that real.\n\nBecause there are two of us, you'll see more than one set of habits — where our setups converge on the same patterns, and where they diverge based on how each of us thinks and works. The pitch isn't \"do more.\" It's that an AI-native setup, designed deliberately, buys back attention and protects you from the burnout that comes from treating agents as a turbocharger for an old loop. Attendees will leave with a concrete mental model for voice-driven development, a pattern for authoring reusable agent skills, and working examples of hooks and scheduled automations they can adapt the same week.",
-        "alt": "Beyond RAG: Build a Relational Context Engine from Scratch (Track 7)"
+        "desc": "Hands-on workshop (laptops required, all tools open-source). Build a rigorous agent-evaluation pipeline end-to-end across five layers: a Benchmark Runner (Harbor orchestrating parallel evals on Terminal-Bench 2.0 with W&B Sandboxes), a Collection Pipeline (WolfBench scanning distributed VMs, dedup, trajectory archive), an Analysis Framework (the five-metric Ceiling/Best/Average/Worst/Solid spread — when is a model actually 'better' vs. noise?), an Observability Layer (full traces in W&B Weave for per-turn inspection of where an agent loops or misreads), and a Leaderboard (interactive HTML charts of the full performance distribution). Works with real data from hundreds of production runs.",
+        "alt": "Evals in AI: A Deep Dive — Tejas Kumar (Track 1)"
       },
       {
         "t": "1:15–2:15",
@@ -306,23 +297,23 @@
         "t": "4:30–5:30",
         "k": "pick",
         "anchor": false,
-        "title": "The Dark Arts of Skill Engineering",
-        "room": "Track 2",
-        "track": "",
+        "title": "Hill-climbing Skills: How to Improve Agents Without Touching the Model",
+        "room": "Track 4",
+        "track": "Workshops Day 1",
         "speakers": [
           {
-            "name": "Paul Bakaus",
-            "role": "Founder",
-            "company": "Renaissance Geek, Inc.",
-            "linkedin": "https://linkedin.com/in/paulbakaus",
-            "twitter": "https://x.com/pbakaus",
-            "website": "https://www.paulbakaus.com/",
+            "name": "Shubhankar Srivastava",
+            "role": "Founding Sales Engineer",
+            "company": "Browserbase",
+            "linkedin": null,
+            "twitter": "https://x.com/_shubhankar",
+            "website": null,
             "blog": null
           }
         ],
         "status": "confirmed",
-        "desc": "Most agent skills are a system prompt and a prayer. They produce safe, median output because that's what LLMs default to. After building 24 design skills across 9 AI platforms, I found the patterns that break through that ceiling, and they're rarely documented or discussed. Make your agents argue: spawn parallel sub-agents that independently evaluate the same work, then force their conflicting opinions into a single result. The output is bolder than any single agent would dare. Build mixture-of-expert skills that route to specialized sub-agents the way frontier models route to specialized networks. Give your skills memory through persistent context files that restore across sessions, so every invocation builds on the last. Wire up skill hooks that auto-activate after execution to validate, transform, or chain into the next skill. Exploit barely documented environment variables and shell expansion to make skills context-aware before they even run. Let's dig into the dark arts of skill engineering to craft ultra powerful skills.",
-        "alt": "Hill-climbing Skills: Improve Agents Without Touching the Model (Track 4)"
+        "desc": "Agent capability now depends heavily on the markdown files read at runtime — skills. This workshop treats skills as a first-class optimization surface, borrowing the 'autoresearch' concept (Karpathy) and applying it to the skills your agents already read. See how Browserbase did this for browser agents — scaling coverage while improving performance (2x faster runs) and cutting token spend (up to 10x cheaper). You'll leave with a working SKILL.md generated through an auto-research loop, and a mental model for when skill optimization beats fine-tuning or prompt engineering.",
+        "alt": "The Art & Science of Loopcraft with Pi — Joel Hooks (Track 8)"
       },
       {
         "t": "6:00–7:15",
@@ -341,7 +332,7 @@
   {
     "id": "d2",
     "label": "Day 2 · Tue",
-    "sub": "Jun 30 · Coding & Retrieval",
+    "sub": "Jun 30 · Track 4 Workshop Day",
     "date": "2026-06-30",
     "slots": [
       {
@@ -357,12 +348,89 @@
         "alt": ""
       },
       {
-        "t": "10:45–11:05",
+        "t": "10:45–12:00",
+        "k": "pick",
+        "anchor": true,
+        "title": "Claude Managed Agents Workshop (Parts 1–3)",
+        "room": "Track 4",
+        "track": "Workshops Day 2",
+        "speakers": [
+          {
+            "name": "Priyanka Phatak",
+            "role": "Member of Technical Staff",
+            "company": "Anthropic",
+            "linkedin": "https://www.linkedin.com/in/priyankaphatak/",
+            "twitter": "https://x.com/PriyankaPhatak",
+            "website": null,
+            "blog": null
+          },
+          {
+            "name": "Gabriel Cemaj",
+            "role": "Member of the Technical Staff",
+            "company": "Anthropic",
+            "linkedin": "https://www.linkedin.com/in/gcemaj",
+            "twitter": "https://x.com/gcemaj",
+            "website": null,
+            "blog": null
+          }
+        ],
+        "status": "confirmed",
+        "desc": "Hands-on, build-along workshop run by the Anthropic team behind Claude Managed Agents (Parts 1–3, 10:45–12:00). You build an agent with Managed Agents. Part 4 runs 12:05–12:25 — skip it to catch 'Rebuilding the web for agents' on Track 3, or stay if you want the full set.",
+        "alt": "Stay in Track 4 for Managed Agents Part 4 (12:05–12:25)"
+      },
+      {
+        "t": "12:05–12:25",
         "k": "pick",
         "anchor": false,
-        "title": "Getting the most out of Codex",
-        "room": "Main Stage",
-        "track": "Software Factories",
+        "title": "Rebuilding the web for agents",
+        "room": "Track 3",
+        "track": "Search & Retrieval",
+        "speakers": [
+          {
+            "name": "Liad Yosef",
+            "role": "Co-creator",
+            "company": "MCP Apps",
+            "linkedin": "https://linkedin.com/in/liadyosef",
+            "twitter": "https://x.com/liadyosef",
+            "website": "https://ora.ai",
+            "blog": null
+          }
+        ],
+        "status": "confirmed",
+        "desc": "AI apps are the new browsers, and the web isn't ready. Based on research watching real agents work the whole journey — finding, understanding, authenticating, acting — this talk maps the agentic-web landscape: which protocols earn their place, why 'agent-ready' and 'accessible' are the same engineering problem, how MCP Apps close the last mile, and how to build for agent-readiness that survives the next model. Key finding: agents ignore the files we build for them and reach for docs/homepages — but link those files properly and usage jumps 4x. Reachability, not format, is what matters.",
+        "alt": "Stay in Track 4 for Managed Agents Part 4 (12:05–12:25)"
+      },
+      {
+        "t": "12:25–1:30",
+        "k": "net",
+        "anchor": false,
+        "title": "Lunch + Expo floor",
+        "room": "",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Protected networking. Day 2 is a Track 4 workshop day with a long protected expo block right after lunch — pace yourself across the floor.",
+        "alt": ""
+      },
+      {
+        "t": "1:30–2:45",
+        "k": "net",
+        "anchor": false,
+        "title": "Expo / Networking block (protected)",
+        "room": "",
+        "track": "",
+        "speakers": [],
+        "status": "",
+        "desc": "Protected expo + networking. Track 4's slot here is 'Everybody Gets a Digital Clone!' (Neil Zeghidour) — a voice-cloning workshop, off your stated interests — so the floor wins this block. Rejoin Track 4 at 2:50 for Jason Liu.",
+        "alt": "Everybody Gets a Digital Clone! — Neil Zeghidour (Track 4)"
+      },
+      {
+        "t": "2:50–4:05",
+        "k": "pick",
+        "anchor": true,
+        "title": "Setting Yourself Up for Success (Parts 1–3)",
+        "room": "Track 4",
+        "track": "Workshops Day 2",
         "speakers": [
           {
             "name": "Jason Liu",
@@ -375,227 +443,8 @@
           }
         ],
         "status": "confirmed",
-        "desc": null,
-        "alt": "Security Firewall for Agents — Ryan Dahl"
-      },
-      {
-        "t": "11:10–11:30",
-        "k": "pick",
-        "anchor": false,
-        "title": "Your Agent Didn’t Fail. Your Harness Did.",
-        "room": "Track 1",
-        "track": "Claws & Personal Agents",
-        "speakers": [
-          {
-            "name": "Vinoth Govindarajan",
-            "role": "Member of Technical Staff",
-            "company": "OpenAI",
-            "linkedin": "https://www.linkedin.com/in/vinothgovindarajan/",
-            "twitter": "https://x.com/iamvinoth",
-            "website": "https://theagentstack.substack.com/",
-            "blog": "https://theagentstack.substack.com/"
-          }
-        ],
-        "status": "confirmed",
-        "desc": "AI agents do not fail only because the model is wrong. Many production failures happen in the harness around the model: state is not persisted, two runs mutate the same session, a tool call never returns, an approval loses scope, or an internal success never becomes user-visible proof. This talk uses OpenClaw as a public case study to examine real harness failure modes and extract a reusable production model for AI engineers. We will look at how events enter an agent system, how session state is rehydrated, why single-writer lanes and throttles matter, and why tool execution needs scoped approvals and auditable receipts. The core idea is simple: a model proposes, the harness commits, and the receipt proves it. Attendees will leave with a practical 'run receipt' audit they can apply to their own agents: what woke it up, which state did it inherit, what authority did it use, what executed, and what evidence survived.",
-        "alt": "The unreasonable effectiveness of BM25 for agentic search"
-      },
-      {
-        "t": "11:40–12:00",
-        "k": "pick",
-        "anchor": false,
-        "title": "Gadgets: Personal app vibe coding that is actually safe",
-        "room": "Track 1",
-        "track": "Software Factories",
-        "speakers": [
-          {
-            "name": "Kenton Varda",
-            "role": "Principal Engineer",
-            "company": "Cloudflare",
-            "linkedin": null,
-            "twitter": "https://x.com/KentonVarda",
-            "website": "https://lanparty.house",
-            "blog": "https://lanparty.house"
-          }
-        ],
-        "status": "confirmed",
-        "desc": "We are entering the end game of Kenton's 15-year master plan. The architect of Cloudflare Workers, Durable Objects, Cap'n Proto, and Sandstorm.io, and the guy who coined the term \"Code Mode\", will demo Gadgets, an AI productivity suite which ties all these ideas together. We've all heard that the future is micro-apps customized for every niche, but how do we actually make that usable, how do we make it scale, and most importantly, how do we make it safe for even non-developers to use? Kenton will show how Gadgets solves these problems, including a sandbox design that makes it essentially impossible for apps to have vulnerabilities at all. He'll then open source it for your slop-forking pleasure.",
-        "alt": "The Search Engine for the Agentic Web — Will Bryk"
-      },
-      {
-        "t": "12:05–12:25",
-        "k": "pick",
-        "anchor": false,
-        "title": "What we learned by analyzing 1M AI-generated PRs",
-        "room": "Main Stage",
-        "track": "Software Factories",
-        "speakers": [
-          {
-            "name": "Daksh Gupta",
-            "role": "co-founder/CEO",
-            "company": "Greptile",
-            "linkedin": "https://www.linkedin.com/company/greptile/posts/?feedView=all",
-            "twitter": "https://x.com/greptile",
-            "website": "https://www.greptile.com",
-            "blog": "https://www.greptile.com"
-          }
-        ],
-        "status": "confirmed",
-        "desc": "We analyzed >1M end-to-end AI generated PRs reviewed by Greptile to understand what types of bugs they tend to create and some strategies on mitigating them. For instance, did you know that Claude Code is nearly 3X more likely than Codex to introduce auth bypass vulnerabilities?",
-        "alt": "Rebuilding the web for agents — Liad Yosef"
-      },
-      {
-        "t": "12:25–1:30",
-        "k": "net",
-        "anchor": false,
-        "title": "Lunch + Expo floor",
-        "room": "",
-        "track": "",
-        "speakers": [],
-        "status": "",
-        "desc": "Protected networking — Day 2 is your secondary-interest day, so work the expo floor.",
+        "desc": "Hands-on Codex workshop (Parts 1–3, 2:50–4:05). Jason Liu walks through using Codex as a general tool to control your computer: setting up your memory vault / assistant threads, prompting threads to talk to each other, exploring computer use, structuring long-running work streams, and learning to think in loops.",
         "alt": ""
-      },
-      {
-        "t": "1:30–1:50",
-        "k": "pick",
-        "anchor": false,
-        "title": "If we want them to do Knowledge Work, we need to design Knowledge Agents",
-        "room": "Track 3",
-        "track": "Search & Retrieval",
-        "speakers": [
-          {
-            "name": "Benjamin Clavié",
-            "role": "Member of Technical Staff",
-            "company": "Mixedbread Inc.",
-            "linkedin": null,
-            "twitter": "https://x.com/bclavie",
-            "website": "https://mixedbread.com",
-            "blog": "https://ben.clavie.eu"
-          }
-        ],
-        "status": "confirmed",
-        "desc": "It's tempting to assume that just like agents revolutionised coding, they will revolutionize other areas: legal, finance, advertising, and even medicine. All of those have in common that they are fundamentally knowledge work. And thankfully, humans have spent thousands of years searching for the best possible workflows for knowledge work. And yet, we seem to be disregarding all of these learnings, forcing every knowledge task into the shape that worked for coding. Today, we're going to talk about the history of knowledge work and how tools were co-designed to support it to understand how we should be building Knowledge Agents, themselves co-designed with their Knowledge Tools. This is key to avoiding falling into a \"good enough\" local optimum: think about legal clerking, a core part of the legal industry where information gathering and reasoning is performed to support the work of senior lawyers. The practice of clerking follows its own code, rules and best practices, which could not have feasibly emerged from studying software engineering: and similarly, there is no reason to believe knowledge agents could emerge from coding agents.",
-        "alt": "Agents' next frontier: agent-to-agent & network effects"
-      },
-      {
-        "t": "1:55–2:15",
-        "k": "pick",
-        "anchor": false,
-        "title": "Claude for long-horizon tasks",
-        "room": "Track 1",
-        "track": "Claws & Personal Agents",
-        "speakers": [
-          {
-            "name": "Lance Martin",
-            "role": "Member of Technical Staff",
-            "company": "Anthropic",
-            "linkedin": "https://www.linkedin.com/in/lance-martin-64a33b5",
-            "twitter": "https://x.com/RLanceMartin",
-            "website": "https://rlancemartin.github.io",
-            "blog": "https://rlancemartin.github.io"
-          }
-        ],
-        "status": "confirmed",
-        "desc": "Claude is capable of long horizon tasks. In this talk, we'll share lessons learned about building agent harnesses for reliable and secure long-horizon work. This include decoupling the brain and hands, self-verification, self-learning, and design for evolving agent harnesses.",
-        "alt": "Self-Improving software factories — Zach Lloyd"
-      },
-      {
-        "t": "2:25–2:45",
-        "k": "pick",
-        "anchor": false,
-        "title": "Tool Execution layer for agents",
-        "room": "Track 1",
-        "track": "Claws & Personal Agents",
-        "speakers": [
-          {
-            "name": "Karan Vaidya",
-            "role": "Co-founder",
-            "company": "Composio",
-            "linkedin": "https://www.linkedin.com/in/kaavee315/",
-            "twitter": "https://x.com/KaranVaidya6",
-            "website": "https://kvaidya.com/",
-            "blog": "https://kvaidya.com/"
-          }
-        ],
-        "status": "confirmed",
-        "desc": "MCP, skills, Cli - so much noise - what’s the best way for agents to communicate",
-        "alt": "River: Shopify's Slack-Native AI Agent"
-      },
-      {
-        "t": "2:50–3:10",
-        "k": "pick",
-        "anchor": false,
-        "title": "Notion's Token Town",
-        "room": "Main Stage",
-        "track": "Software Factories",
-        "speakers": [
-          {
-            "name": "Sarah Sachs",
-            "role": "Eng Lead, AI",
-            "company": "Notion",
-            "linkedin": "https://www.linkedin.com/in/sarahmsachs/",
-            "twitter": "https://x.com/sarahmsachs",
-            "website": null,
-            "blog": null
-          }
-        ],
-        "status": "confirmed",
-        "desc": null,
-        "alt": "Where RL Will Take Search"
-      },
-      {
-        "t": "3:20–3:40",
-        "k": "pick",
-        "anchor": false,
-        "title": "Stop Chunking Like It's 2022",
-        "room": "Track 3",
-        "track": "Search & Retrieval",
-        "speakers": [
-          {
-            "name": "Yuval Belfer",
-            "role": "Sr. Developer Advocate",
-            "company": "AI21",
-            "linkedin": "https://linkedin.com/in/yuval-belfer",
-            "twitter": "https://x.com/yuvalinthedeep",
-            "website": null,
-            "blog": null
-          },
-          {
-            "name": "Niv Granot",
-            "role": null,
-            "company": null,
-            "linkedin": null,
-            "twitter": null,
-            "website": null,
-            "blog": null
-          }
-        ],
-        "status": "confirmed",
-        "desc": "Every RAG system bets everything on a single chunk size. 500 tokens? 800? Pick wrong, and half your queries fail before they start. But here's what nobody tells you: all the picks are wrong; there is no single chunk size that works for all queries. We ran oracle experiments across meeting transcripts, story chapters, and TV scripts. The result? Queries disagree violently on what chunk size works best - sometimes by 40 percentage points. Your \"tuned\" chunk size isn't a compromise; it's systematic underperformance. In this talk, we'll expose why fixed chunking fails and show you a dead-simple fix: index at multiple chunk sizes, aggregate at retrieval time using Reciprocal Rank Fusion. No retraining. No LLM overhead. Just 1-37% better recall across benchmarks by letting queries vote with their ranks instead of forcing them into one-size-fits-all boxes. Walk away knowing exactly when your chunk size is sabotaging you - and how to stop leaving 20-40% of your retrieval performance on the table.",
-        "alt": "fighting slop with slop — Vaibhav Gupta (BAML)"
-      },
-      {
-        "t": "3:45–4:05",
-        "k": "pick",
-        "anchor": false,
-        "title": "The Software Factory Survivor's Guide",
-        "room": "Main Stage",
-        "track": "Software Factories",
-        "speakers": [
-          {
-            "name": "Kyle Mistele",
-            "role": "CTO",
-            "company": "HumanLayer",
-            "linkedin": "https://www.linkedin.com/in/kyle-mistele",
-            "twitter": "https://x.com/0xBlacklight",
-            "website": "https://blacklight.sh",
-            "blog": null
-          }
-        ],
-        "status": "confirmed",
-        "desc": "Code is free, software is infinite, and agents can do it all - that's the promise of the lights-off software factory, where humans interact only with tickets & specifications, and nobody reads the code, let alone writes it. We ran our own for six months, and we have the scars to prove it - bad code compounded, and agents created problems that agents couldn't solve - until we had to throw it all away. But this is a survivor's guide, not an obituary. In this talk, we'll share the challenges we encountered, what we liked, what we hated, what we're still doing, what we stopped doing, and what we started doing afterwards.",
-        "alt": "Every Harness Will Become A Claw — Sam Bhagwat"
       },
       {
         "t": "4:30–5:30",
@@ -708,23 +557,23 @@
         "t": "12:05–12:25",
         "k": "pick",
         "anchor": false,
-        "title": "Prompt, Memory, Weights: The Architecture Decisions Most AI Teams Make by Accident",
-        "room": "Expo Stage 4 SE",
-        "track": "Context Engineering",
+        "title": "Your agent needs a sandbox, not a desert",
+        "room": "Track 1",
+        "track": "Sandbox & Platform Engineering",
         "speakers": [
           {
-            "name": "Anant Srivastava",
-            "role": null,
-            "company": "Oracle",
-            "linkedin": "https://www.linkedin.com/in/anantds",
-            "twitter": null,
+            "name": "Samuel Colvin",
+            "role": "Founder & CEO",
+            "company": "Pydantic",
+            "linkedin": null,
+            "twitter": "https://x.com/samuelcolvin",
             "website": null,
             "blog": null
           }
         ],
         "status": "confirmed",
-        "desc": "The interesting engineering in production AI isn't in the model. Your knowledge lives in files, databases, and APIs: docs, runbooks, conversations, code. The model just reads tokens. So the real architectural question is which path that knowledge takes to inference: into the prompt directly, into memory for retrieval on demand, or into the weights through fine-tuning. Most teams treat these as a ladder. Start with prompts, escalate to RAG, eventually fine-tune, as if each step is a more advanced version of the last. The field is converging on a different answer: they solve different problems. The prompt shapes behavior and constraints. Memory grounds the model in current, citable knowledge. Weights harden specialized reasoning and format. They're not substitutes you graduate between; they're complementary, and the failures come from using one to do another's job. Fine-tuning to teach the model facts it should have retrieved is the classic trap: you bake in knowledge that's stale the day it ships, and you still can't cite it. This is an opinionated take on all three: when each is the right call, when each is a trap, and the part most teams never build, the circulation between them. Memory that captures what the agent does becomes the dataset you fine-tune on; fine-tuning changes what's worth retrieving; the loop compounds. Get the three paths right and they stop being a pipeline you climb and start being an architecture that learns.",
-        "alt": "Your agents lack context: fixing 'You're absolutely right!'"
+        "desc": "Everyone agrees agents need code execution — agreement that lasts right until you ask how. The default answer ('my agent needs a full Linux VM') is convenient for sandbox providers but often wrong. Many agent workflows don't need a whole computer, arbitrary packages, shell access, CPython/node, let alone awk/sed/gcc — just a small amount of safe, expressive compute to write code, call tools, and keep intermediate state out of the context window. That's the idea behind Monty: a minimal Python interpreter written in Rust, built specifically for agent-written code. The argument: for a surprisingly large class of agent systems, a curated set of tools in a custom runtime beats a full sandbox — full sandboxes solve a much bigger problem than most embedded agents have, and you pay for that mismatch in complexity, cost, operational pain, and 100,000x higher latency.",
+        "alt": "Prompt, Memory, Weights: Architecture Decisions Teams Make by Accident (Context Eng)"
       },
       {
         "t": "12:25–1:30",
@@ -1037,23 +886,23 @@
         "t": "1:55–2:15",
         "k": "pick",
         "anchor": false,
-        "title": "🎵 Every step you take, every call you make - the reliable agent stack",
-        "room": "Main Stage",
-        "track": "Harness Engineering",
+        "title": "Multiplayer agentic engineering: enabling your whole team and your best agents to work together",
+        "room": "Track 8",
+        "track": "Agentic Engineering",
         "speakers": [
           {
-            "name": "Giselle van Dongen",
-            "role": "Developer Advocate",
-            "company": "Restate",
-            "linkedin": "https://www.linkedin.com/in/giselle-van-dongen/",
-            "twitter": "https://x.com/vdgiselle",
+            "name": "Arjun Singh",
+            "role": "Co-founder and CEO",
+            "company": "Superconductor",
+            "linkedin": null,
+            "twitter": "https://x.com/singharjun51293",
             "website": null,
             "blog": null
           }
         ],
         "status": "confirmed",
-        "desc": "In this session, we skip past the demos that work only on your laptop, and go straight to how you can build production-ready agents with a stack that covers all the hard bits of backend development that you don’t want to be bothered with when developing your agents: - Failure resiliency: retries, timeouts, and exactly-once execution so a flaky API or a crashed process doesn't corrupt your agent's state or makes them start from scratch - Durable Sessions: a session store with built-in conversation isolation and protection against corruption from concurrent agents - Pause/resume for human approvals: survive human approvals and research that take weeks without building complex infra - Agent-to-agent messaging layer: call agents developed by other teams or running on other infra with resilient HTTP calls - A kill switch: cancel a running agent cleanly at any point, without leaving half-executed work behind We will demonstrate each concept with live code examples, using Python, OpenAI Agents SDK and Restate as open-source Durable Execution engine. All examples are generally applicable: pick your favorite agent SDK (OpenAI Agents, Pydantic AI, Vercel AI, Google ADK,…) or go wild and implement low-level custom agents by just tying together LLM calls with custom logic.",
-        "alt": "Multiplayer agentic engineering — Arjun Singh"
+        "desc": "For a solo dev, coding agents are a superpower; for a team they surface new bottlenecks — coordination, visibility, review, shared context. Five practices from building a multiplayer cloud workspace for agentic engineering: turn every team surface into an agent interface (kick off from Slack, review via iOS, iterate in GitHub comments, ship from web, agents run in the cloud); make agent work visible and collaborative (shared sessions, live previews, agent-guided review); turn every external signal — customer emails, action items, bug reports — into reviewable implementations; share cloud dev environments so agents aren't siloed (secrets, RBAC, network controls, fast startup); and benchmark agents on your own codebase using merged PRs as ground truth to build a 'Personal SWE-Bench'.",
+        "alt": "🎵 The reliable agent stack — Giselle van Dongen (Main Stage)"
       },
       {
         "t": "2:25–2:45",

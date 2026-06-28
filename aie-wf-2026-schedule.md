@@ -15,34 +15,26 @@
 |---|---|---|---|
 | 9:00–11:00 | **Total Recall: Agent Memory & Harness Engineering** | Tr 6 | Cooking with Codex (Tr 3) |
 | 11:05–12:05 | **How to Build Quality Gates into Agentic Coding Workflows** | Tr 7 | How I learned to stop worrying and love the sandbox (Tr 3) |
-| 12:10–1:10 | **Lifestyles of the AI-Native: agent skills, hooks, scheduled tasks** | Tr 2 | Beyond RAG: Build a Relational Context Engine from Scratch (Tr 7) |
+| 12:10–1:10 | **From Zero to Leaderboard: End-to-End AI Agent Evaluation Pipeline** — Wolfram Ravenwolf | Tr 5 | Evals in AI: A Deep Dive — Tejas Kumar (Tr 1) |
 | 1:15–2:15 | 🟢 **Lunch + Expo** | — | *optional hands-on:* Turning My Obsidian Vault Into a Local AI Engineer (Tr 8) |
 | **2:20–4:20** | ⭐ **ANCHOR — Context Engineering in 2026: Compaction, Memory & Cost** | Tr 6 | From Vibes to Production: Evaluating & Shipping AI Agents 201 (Tr 1) |
-| 4:30–5:30 | **The Dark Arts of Skill Engineering** | Tr 2 | Hill-climbing Skills: Improve Agents Without Touching the Model (Tr 4) |
+| 4:30–5:30 | **Hill-climbing Skills: Improve Agents Without Touching the Model** — Shubhankar Srivastava | Tr 4 | The Art & Science of Loopcraft with Pi — Joel Hooks (Tr 8) |
 | 6:00–7:15 | 🟢 **Expo Welcome + Runway AI Film Festival** | Expo | — |
 
 ---
 
-## 📅 Day 2 — Tue Jun 30 · Coding Agents / Software Factories / Retrieval
-*Secondary-interest day → spend more of the protected time on the expo floor.*
+## 📅 Day 2 — Tue Jun 30 · Track 4 Hands-On Workshop Day
+*Reoriented around the Track 4 workshops (Claude Managed Agents → Codex/Jason Liu), with a protected expo + networking block midday.*
 
 | Time | ✅ Pick | Track | Backup (alt) |
 |---|---|---|---|
 | 9:00–10:30 | 🎤 **Keynotes** — swyx "3 Years of AI Eng" · Thom Wolf · OpenAI (Embiricos/Huet) · GLM-5.2 | Main | — |
-| 10:45–11:05 | **Getting the most out of Codex** — Jason Liu | Software Factories | Security Firewall for Agents — Ryan Dahl |
-| 11:10–11:30 | **Your Agent Didn't Fail. Your Harness Did.** | Claws | The unreasonable effectiveness of BM25 for agentic search |
-| 11:40–12:00 | **Gadgets: Personal app vibe coding that is actually safe** — Kenton Varda | Software Factories | The Search Engine for the Agentic Web — Will Bryk |
-| 12:05–12:25 | **What we learned by analyzing 1M AI-generated PRs** — Daksh Gupta | Software Factories | Rebuilding the web for agents — Liad Yosef |
+| 10:45–12:00 | ⭐ **Claude Managed Agents Workshop** (Pts 1–3) — Priyanka Phatak, Gabriel Cemaj | Tr 4 | *Pt 4 runs 12:05–12:25 if you skip the hop below* |
+| 12:05–12:25 | **Rebuilding the web for agents** — Liad Yosef | Tr 3 | stay in Tr 4 for Managed Agents Pt 4 |
 | 12:25–1:30 | 🟢 **Lunch + Expo floor** | — | — |
-| 1:30–1:50 | **Design Knowledge Agents for Knowledge Work** — Benjamin Clavié | Search & Retrieval | Agents' next frontier: agent-to-agent & network effects |
-| 1:55–2:15 | **Claude for long-horizon tasks** — Lance Martin | Claws | Self-Improving software factories — Zach Lloyd |
-| 2:25–2:45 | **Tool Execution layer for agents** — Karan Vaidya | Claws | River: Shopify's Slack-Native AI Agent |
-| 2:50–3:10 | **Notion's Token Town** — Sarah Sachs | Software Factories | Where RL Will Take Search |
-| 3:20–3:40 | **Stop Chunking Like It's 2022** | Search & Retrieval | fighting slop with slop — Vaibhav Gupta (BAML) |
-| 3:45–4:05 | **The Software Factory Survivor's Guide** — Kyle Mistele | Software Factories | Every Harness Will Become A Claw — Sam Bhagwat |
+| 1:30–2:45 | 🟢 **Expo / Networking block** (protected) | — | *if you'd rather do a workshop:* Everybody Gets a Digital Clone — Neil Zeghidour (Tr 4) |
+| **2:50–4:05** | ⭐ **Setting Yourself Up for Success** (Pts 1–3) — Jason Liu *(Codex: memory vaults, multi-thread, thinking in loops)* | Tr 4 | — |
 | 4:30–5:30 | 🎤 **Closing keynotes** — ⭐Dex Horthy "Why Software Factories Fail" · Erik Meijer · Lee Robinson "Future of Cursor" | Main | — |
-
-> 💡 **Hands-on anchor options** (Track 4, your ticket covers them): **Claude Managed Agents Workshop** (10:45–12:25, AM) · **Jason Liu "Setting Yourself Up for Success"** (2:50–4:05, PM).
 
 ---
 
@@ -54,7 +46,7 @@
 | 10:45–11:05 | **Build-Time vs. Run-Time: Why Your Dev Tools Will Fail in Production** | Context Engineering | Understanding is the New Bottleneck — Geoffrey Litt |
 | 11:10–11:30 | **Building a Unified Interface for LLMs** — Shashank Goyal | Sandbox & Platform | It's Tokens All The Way Down: How RLMs Differ |
 | 11:40–12:00 | **500 Skills, Zero Fine-Tuning: LinkedIn's Playbook** — Ajay Prakash | Context Engineering | Scaling Compute on Context — Jack Morris |
-| 12:05–12:25 | **Prompt, Memory, Weights: Architecture Decisions Teams Make by Accident** | Context Engineering | Your agents lack context: fixing "You're absolutely right!" |
+| 12:05–12:25 | **Your agent needs a sandbox, not a desert** — Samuel Colvin | Sandbox & Platform | Prompt, Memory, Weights: Architecture Decisions Teams Make by Accident (Context Eng) |
 | 12:25–1:30 | 🟢 **Lunch + Expo** | — | — |
 | 1:30–1:50 | **How long can your skills be before your agent forgets?** — Laurie Voss | Context Engineering | Adaption Labs: Gradient-Free Continual Learning — Sara Hooker |
 | 1:55–2:15 | **Cut Through the Context Hype: 4 Layers Your Agent Is Missing** — Prukalpa Sankar | Context Engineering | Improving Agents is a Data Mining Problem |
@@ -79,7 +71,7 @@
 | 12:05–12:25 | **Harness Engineering: Building the Production Cage for Domain Agents** — Mike Chambers | Harness Engineering | Benchmarking Coding Agents on New vs Legacy Code |
 | 12:25–1:30 | 🟢 **Lunch + Expo** | — | — |
 | 1:30–1:50 | **Building on the Codex Harness** — Dominik Kundel | Agentic Engineering | What's New in Inference Engineering — Philip Kiely |
-| 1:55–2:15 | **The reliable agent stack** — Giselle van Dongen | Harness Engineering | Multiplayer agentic engineering — Arjun Singh |
+| 1:55–2:15 | **Multiplayer agentic engineering** — Arjun Singh | Agentic Engineering | 🎵 The reliable agent stack — Giselle van Dongen (Main Stage) |
 | 2:25–2:45 | **We let an AI agent execute Bash and lived to talk about it** — Sarah Sanders | Harness Engineering | Always-on agents run production without the on-call tax |
 | 2:50–3:10 | **No Memory, No Harness: The Database Is the Last Line of Defense** — Kay Malcolm | Harness Engineering | Realtime multiplayer, automation, and you! — Idan Gazit |
 | 3:20–3:40 | **We Solved Agent Building: Evolution of a Data-Science Agent** — Andrew Qu | Harness Engineering | Two Bugs in vLLM: A Debugging Detective Story |
