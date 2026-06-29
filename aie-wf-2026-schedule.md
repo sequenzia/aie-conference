@@ -29,8 +29,8 @@
 | Time | ✅ Pick | Track | Backup (alt) |
 |---|---|---|---|
 | 9:00–10:30 | 🎤 **Keynotes** — swyx "3 Years of AI Eng" · Thom Wolf · OpenAI (Embiricos/Huet) · GLM-5.2 | Main | — |
-| 10:45–12:00 | ⭐ **Claude Managed Agents Workshop** (Pts 1–3) — Priyanka Phatak, Gabriel Cemaj | Tr 4 | *Pt 4 runs 12:05–12:25 if you skip the hop below* |
-| 12:05–12:25 | **Rebuilding the web for agents** — Liad Yosef | Tr 3 | stay in Tr 4 for Managed Agents Pt 4 |
+| 10:45–12:00 | ⭐ **Claude Managed Agents Workshop** (Pts 1–3) — Priyanka Phatak, Gabriel Cemaj | Tr 4 | — |
+| 12:05–12:25 | ⭐ **Claude Managed Agents Workshop (Part 4)** — Priyanka Phatak, Gabriel Cemaj | Tr 4 | Rebuilding the web for agents — Liad Yosef (Tr 3) |
 | 12:25–1:30 | 🟢 **Lunch + Expo floor** | — | — |
 | 1:30–2:45 | 🟢 **Expo / Networking block** (protected) | — | *if you'd rather do a workshop:* Everybody Gets a Digital Clone — Neil Zeghidour (Tr 4) |
 | **2:50–4:05** | ⭐ **Setting Yourself Up for Success** (Pts 1–3) — Jason Liu *(Codex: memory vaults, multi-thread, thinking in loops)* | Tr 4 | — |
@@ -50,9 +50,9 @@
 | 12:25–1:30 | 🟢 **Lunch + Expo** | — | — |
 | 1:30–1:50 | **How long can your skills be before your agent forgets?** — Laurie Voss | Context Engineering | Adaption Labs: Gradient-Free Continual Learning — Sara Hooker |
 | 1:55–2:15 | **Cut Through the Context Hype: 4 Layers Your Agent Is Missing** — Prukalpa Sankar | Context Engineering | Improving Agents is a Data Mining Problem |
-| 2:25–2:45 | **1,000 Agent Tasks in a Sandbox: What Breaks When LLMs Write & Run Code** — Kevin Orellana | Sandbox & Platform | MCP Apps — Extending the frontier — Liad Yosef, Ido Salomon |
+| 2:25–2:45 | **Self-Improvement of Context, Harness & Model Weights through Reflective Optimization** — Lakshya Agrawal | Main · Autoresearch | 1,000 Agent Tasks in a Sandbox — Kevin Orellana (Sandbox & Platform) |
 | 2:50–3:10 | **MCP Apps: Give the Model Data, Give the User a UI** — Dustin Mihalik | Context Engineering | Designing Agents (The Floor Is the Frontier) — Ben Hylak |
-| 3:20–3:40 | **Lessons from Studying Every Memory System** — Shlok Khemani | Memory | Sandboxes Aren't Optional: Runtime Isolation Patterns |
+| 3:20–3:40 | **Don't Ship Skills Without Evals** — Philipp Schmid | Evals | Lessons from Studying Every Memory System — Shlok Khemani (Memory) |
 | 3:45–4:05 | **LLM Knowledge Bases: a practical guide** — Ben Holmes | Memory | The Universal Remote Control for AI — Alex Hancock |
 | 4:30–5:30 | 🎤 **Closing keynotes** — Addy Osmani · "Trends in AI" (Artificial Analysis) · LMArena | Main | — |
 
@@ -67,10 +67,10 @@
 | 9:00–10:30 | 🎤 **Keynotes** — ⭐Matt Pocock "Building Great Agent Skills" · John Ousterhout · Mike Krieger (Anthropic) · Emil Eifrem | Main | — |
 | 10:45–11:05 | **Tokens Should Have Jobs** | Harness Engineering | Local AI State of the Union Pt 1 (OSS anchor, runs to 11:30) |
 | 11:10–11:30 | **MCPs, CLIs, and Skills: Choosing the Right Tooling Layer** — Nikita Kothari | Agentic Engineering | Anthropic's CCA Exam as a Field-Guide — Frank Coyle |
-| 11:40–12:00 | **Auth for Agents: Unblock Autonomous AI with auth.md** — Michael Grinich | Agentic Engineering | Guide, Verify, Solve |
+| 11:40–12:00 | **Guide, Verify, Solve: The Engineering Discipline Agentic Development Demands** — Anirban Chatterjee | Agentic Engineering | Auth for Agents: auth.md — Michael Grinich |
 | 12:05–12:25 | **Harness Engineering: Building the Production Cage for Domain Agents** — Mike Chambers | Harness Engineering | Benchmarking Coding Agents on New vs Legacy Code |
 | 12:25–1:30 | 🟢 **Lunch + Expo** | — | — |
-| 1:30–1:50 | **Building on the Codex Harness** — Dominik Kundel | Agentic Engineering | What's New in Inference Engineering — Philip Kiely |
+| 1:30–1:50 | **Codex, Behind the Harness** — Dominik Kundel | Agentic Engineering | What's New in Inference Engineering — Philip Kiely |
 | 1:55–2:15 | **Multiplayer agentic engineering** — Arjun Singh | Agentic Engineering | 🎵 The reliable agent stack — Giselle van Dongen (Main Stage) |
 | 2:25–2:45 | **We let an AI agent execute Bash and lived to talk about it** — Sarah Sanders | Harness Engineering | Always-on agents run production without the on-call tax |
 | 2:50–3:10 | **No Memory, No Harness: The Database Is the Last Line of Defense** — Kay Malcolm | Harness Engineering | Realtime multiplayer, automation, and you! — Idan Gazit |

@@ -375,30 +375,39 @@
           }
         ],
         "status": "confirmed",
-        "desc": "Hands-on, build-along workshop run by the Anthropic team behind Claude Managed Agents (Parts 1–3, 10:45–12:00). You build an agent with Managed Agents. Part 4 runs 12:05–12:25 — skip it to catch 'Rebuilding the web for agents' on Track 3, or stay if you want the full set.",
-        "alt": "Stay in Track 4 for Managed Agents Part 4 (12:05–12:25)"
+        "desc": "Hands-on, build-along workshop run by the Anthropic team behind Claude Managed Agents (Parts 1–3, 10:45–12:00). You build a working agent with Managed Agents — and you've opted to stay for Part 4 (12:05–12:25) to do the full 4-part set.",
+        "alt": ""
       },
       {
         "t": "12:05–12:25",
         "k": "pick",
-        "anchor": false,
-        "title": "Rebuilding the web for agents",
-        "room": "Track 3",
-        "track": "Search & Retrieval",
+        "anchor": true,
+        "title": "Claude Managed Agents Workshop (Part 4)",
+        "room": "Track 4",
+        "track": "Workshops Day 2",
         "speakers": [
           {
-            "name": "Liad Yosef",
-            "role": "Co-creator",
-            "company": "MCP Apps",
-            "linkedin": "https://linkedin.com/in/liadyosef",
-            "twitter": "https://x.com/liadyosef",
-            "website": "https://ora.ai",
+            "name": "Priyanka Phatak",
+            "role": "Member of Technical Staff",
+            "company": "Anthropic",
+            "linkedin": "https://www.linkedin.com/in/priyankaphatak/",
+            "twitter": "https://x.com/PriyankaPhatak",
+            "website": null,
+            "blog": null
+          },
+          {
+            "name": "Gabriel Cemaj",
+            "role": "Member of the Technical Staff",
+            "company": "Anthropic",
+            "linkedin": "https://www.linkedin.com/in/gcemaj",
+            "twitter": "https://x.com/gcemaj",
+            "website": null,
             "blog": null
           }
         ],
         "status": "confirmed",
-        "desc": "AI apps are the new browsers, and the web isn't ready. Based on research watching real agents work the whole journey — finding, understanding, authenticating, acting — this talk maps the agentic-web landscape: which protocols earn their place, why 'agent-ready' and 'accessible' are the same engineering problem, how MCP Apps close the last mile, and how to build for agent-readiness that survives the next model. Key finding: agents ignore the files we build for them and reach for docs/homepages — but link those files properly and usage jumps 4x. Reachability, not format, is what matters.",
-        "alt": "Stay in Track 4 for Managed Agents Part 4 (12:05–12:25)"
+        "desc": "Final part of the Anthropic-led Claude Managed Agents workshop — finish building your agent with Managed Agents. You chose to stay for the full 4-part set rather than hop to Track 3.",
+        "alt": "Rebuilding the web for agents — Liad Yosef (Track 3, Search & Retrieval)"
       },
       {
         "t": "12:25–1:30",
@@ -635,23 +644,23 @@
         "t": "2:25–2:45",
         "k": "pick",
         "anchor": false,
-        "title": "1,000 Agent Tasks in a Sandbox: What Breaks When LLMs Write and Run Code",
-        "room": "Track 1",
-        "track": "Sandbox & Platform Engineering",
+        "title": "Self-Improvement of Context, Harness, and Model Weights through Reflective Optimization",
+        "room": "Main Stage",
+        "track": "Autoresearch",
         "speakers": [
           {
-            "name": "Kevin Orellana",
-            "role": "Software Engineer",
-            "company": "Amazon Web Services",
-            "linkedin": "https://www.linkedin.com/in/kevinorellana/",
-            "twitter": "https://x.com/KevssOrellana",
-            "website": null,
+            "name": "Lakshya Agrawal",
+            "role": "Creator & maintainer of GEPA · PhD, UC Berkeley Sky Computing Lab",
+            "company": "GEPA",
+            "linkedin": "https://www.linkedin.com/in/lakshyaaagrawal/",
+            "twitter": "https://x.com/LakshyAAAgrawal",
+            "website": "https://lakshyaaagrawal.github.io/",
             "blog": null
           }
         ],
         "status": "confirmed",
-        "desc": "We ran 1,000 automated tasks through a production code interpreter sandbox — file I/O, package installs, data analysis, ML training, binary downloads, multi-language execution — and tracked every failure. 88% passed. The other 12% revealed 18 distinct failure modes that no unit test would catch: binary encoding corruption in the transport layer, null bytes silently truncating file downloads, pip blocked by network isolation with no useful error, and path traversal inputs accepted without validation. This talk walks through the experiment design, the findings ranked by severity, and what we changed. If you are building or operating sandboxed execution for AI agents, these are the bugs waiting for your customers to find first.",
-        "alt": "MCP Apps - Extending the frontier — Liad Yosef, Ido Salomon"
+        "desc": "Reflective optimization across context, harness, and model weights. Introduces GEPA — a reflective prompt optimizer that reflects on full trajectories (reasoning, tool calls, errors) to diagnose failures and propose targeted improvements, beating GRPO by up to 20% with up to 35x fewer rollouts; optimize_anything, a unified API generalizing reflective optimization to arbitrary text parameters (agent architecture discovery, CUDA kernels, scheduling policy); and Fast-Slow Training, which jointly optimizes model weights via RL and textual context via GEPA for better sample efficiency and continual-learning plasticity. An eval-driven, general-purpose alternative to task-specific RL — dead-center on harness + context self-improvement. (Swapped in over '1,000 Agent Tasks in a Sandbox'.)",
+        "alt": "1,000 Agent Tasks in a Sandbox — Kevin Orellana (Track 1, Sandbox & Platform)"
       },
       {
         "t": "2:50–3:10",
@@ -679,23 +688,23 @@
         "t": "3:20–3:40",
         "k": "pick",
         "anchor": false,
-        "title": "Lessons from Studying Every Memory System",
-        "room": "Track 3",
-        "track": "Memory & Continual Learning",
+        "title": "Don't Ship Skills Without Evals",
+        "room": "Track 5",
+        "track": "Evals",
         "speakers": [
           {
-            "name": "Shlok Khemani",
-            "role": "Independent Researcher",
-            "company": "-",
-            "linkedin": "https://linkedin.com/in/shlokkhemani/",
-            "twitter": "https://x.com/shloked",
-            "website": "https://shloked.com",
-            "blog": "https://www.shloked.com"
+            "name": "Philipp Schmid",
+            "role": "Staff Engineer (Gemini / Gemma)",
+            "company": "Google DeepMind",
+            "linkedin": "https://www.linkedin.com/in/philipp-schmid-a6a2bb196/",
+            "twitter": "https://x.com/_philschmid",
+            "website": "https://www.philschmid.de/",
+            "blog": "https://www.philschmid.de"
           }
         ],
         "status": "confirmed",
-        "desc": "I've studied every major memory implementation in the industry and then built multiple memory systems for various teams. Sharing hot takes and lessons from across architectures, design, scaling, evals, and memory philosophy.",
-        "alt": "Sandboxes Aren't Optional: Runtime Isolation Patterns"
+        "desc": "Thousands of agent skills exist; almost none are tested — they get vibe-checked with two manual runs and shipped. You wouldn't merge code without tests, so why ship skills without evals? Covers the full lifecycle of reliable skills: what a skill actually is (and isn't), how to write one that triggers correctly, and how to build a lightweight eval harness that catches failures before users do. Hits your #1 and #2 interests at once — skills × evals. (Swapped in over 'Lessons from Studying Every Memory System'; note this is the first of a two-talk Philipp Schmid arc, with 'Agents Without Code' on Thu.)",
+        "alt": "Lessons from Studying Every Memory System — Shlok Khemani (Track 3, Memory)"
       },
       {
         "t": "3:45–4:05",
@@ -808,23 +817,23 @@
         "t": "11:40–12:00",
         "k": "pick",
         "anchor": false,
-        "title": "Auth for Agents: Unblock Autonomous AI with auth.md",
-        "room": "Main Stage",
+        "title": "Guide, Verify, Solve: The Engineering Discipline Agentic Development Demands",
+        "room": "Track 8",
         "track": "Agentic Engineering",
         "speakers": [
           {
-            "name": "Michael Grinich",
-            "role": "Founder & CEO",
-            "company": "WorkOS",
+            "name": "Anirban Chatterjee",
+            "role": null,
+            "company": "Sonar",
             "linkedin": null,
-            "twitter": "https://x.com/grinich",
+            "twitter": null,
             "website": null,
             "blog": null
           }
         ],
         "status": "confirmed",
-        "desc": "AI agents are ready to act on users' behalf, but legacy auth flows were built for humans, not agents. This session introduces auth.md, an open protocol that lets agents register and authenticate users without sign-up forms, and shares what early implementers have learned since launch. Learn about the new protocol that Cloudflare, Firecrawl, Cogny, and monday.com are adopting to power agent registration — authenticating agents without sign-up forms.",
-        "alt": "Guide, Verify, Solve"
+        "desc": "Agentic development is a reliability-engineering problem at unfamiliar scale: long-running agent tasks fail at alarming rates, PRs have grown from 50 to 5,000 lines, and 'cognitive surrender' sets in just as stakes peak. CMU research across 807 OSS projects found agent adoption drove a persistent 30% rise in code-analysis warnings and 41% more complexity, with velocity declining long-term. The fix is to govern the loop: Sonar's AC/DC cycle — guide agents with project context/constraints up front, verify continuously inside the loop (not downstream in CI), and solve issues automatically before manual review. Dead-center on harness + reliability. (Swapped in over 'Auth for Agents: auth.md'.)",
+        "alt": "Auth for Agents: Unblock Autonomous AI with auth.md — Michael Grinich (Main Stage)"
       },
       {
         "t": "12:05–12:25",
@@ -864,7 +873,7 @@
         "t": "1:30–1:50",
         "k": "pick",
         "anchor": false,
-        "title": "Building on the Codex Harness",
+        "title": "Codex, Behind the Harness",
         "room": "Track 8",
         "track": "Agentic Engineering",
         "speakers": [
@@ -878,8 +887,8 @@
             "blog": null
           }
         ],
-        "status": "tentative",
-        "desc": null,
+        "status": "confirmed",
+        "desc": "Taking apart the open-source Codex agent harness: how it works, what makes it suitable for general-purpose work beyond coding, and how it handles context management, tools, and filesystem access — tied back to concrete patterns you can bring into your own agents, whether building on Codex or rolling your own. (Confirmed retitle of your original 'Building on the Codex Harness'.)",
         "alt": "What's New in Inference Engineering — Philip Kiely"
       },
       {
