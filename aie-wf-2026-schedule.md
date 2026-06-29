@@ -29,8 +29,7 @@
 | Time | ✅ Pick | Track | Backup (alt) |
 |---|---|---|---|
 | 9:00–10:30 | 🎤 **Keynotes** — swyx "3 Years of AI Eng" · Thom Wolf · OpenAI (Embiricos/Huet) · GLM-5.2 | Main | — |
-| 10:45–12:00 | ⭐ **Claude Managed Agents Workshop** (Pts 1–3) — Priyanka Phatak, Gabriel Cemaj | Tr 4 | — |
-| 12:05–12:25 | ⭐ **Claude Managed Agents Workshop (Part 4)** — Priyanka Phatak, Gabriel Cemaj | Tr 4 | Rebuilding the web for agents — Liad Yosef (Tr 3) |
+| 10:45–12:25 | ⭐ **Claude Managed Agents Workshop** (Pts 1–4) — Priyanka Phatak, Gabriel Cemaj | Tr 4 | Rebuilding the web for agents — Liad Yosef (Tr 3) |
 | 12:25–1:30 | 🟢 **Lunch + Expo floor** | — | — |
 | 1:30–2:45 | 🟢 **Expo / Networking block** (protected) | — | *if you'd rather do a workshop:* Everybody Gets a Digital Clone — Neil Zeghidour (Tr 4) |
 | **2:50–4:05** | ⭐ **Setting Yourself Up for Success** (Pts 1–3) — Jason Liu *(Codex: memory vaults, multi-thread, thinking in loops)* | Tr 4 | — |

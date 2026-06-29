@@ -50,7 +50,7 @@ without re-doing discovery or re-running the interview.
   boxes persisted in `localStorage`, multi-select + export of chosen sessions to Markdown/clipboard or
   `.ics` calendar, Print→PDF). No build step / no network.
 
-The schedule is also mirrored as **46 Google Calendar events** on my primary calendar
+The schedule is also mirrored as **45 Google Calendar events** on my primary calendar
 (Sequenzia Gmail), in Pacific time, color-coded (keynote=Banana, pick=Blueberry, Day-1 anchor=Tomato,
 networking=Basil), with 5-min popup reminders and the backup pick in each event's notes.
 
